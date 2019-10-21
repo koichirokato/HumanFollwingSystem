@@ -36,5 +36,4 @@
 |kinect|xtionから人の座標を取得するRTC|
 |URG|測域センサから値を取得するRTC|
 |object_tracking_concierge|センサからの値を受け取り指令を出すRTC|
-|URG|測域センサから値を取得するRTC|
 |Prediction|今回開発した人の軌跡を予測するRTC|
