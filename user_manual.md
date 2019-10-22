@@ -34,12 +34,12 @@
 <img src="./Image_for_Manual/concierge.png" width="60%">
 
 ### 1.3.2 測域センサ  
-測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．  
+測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．(参考文献：https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
 <img src="./Image_for_Manual/URG.png" width="40%">
 
 
 ### 1.3.3 Depthセンサ  
-DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．  
+DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
 <img src="./Image_for_Manual/Xtion.png" width="80%">
 
 
