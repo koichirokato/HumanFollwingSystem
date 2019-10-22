@@ -12,6 +12,12 @@
     - [1.3.2 測域センサ](#132-%e6%b8%ac%e5%9f%9f%e3%82%bb%e3%83%b3%e3%82%b5)
     - [1.3.3 Depthセンサ](#133-depth%e3%82%bb%e3%83%b3%e3%82%b5)
 - [2. 本システムの各RTCの概要と仕様](#2-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e5%90%84rtc%e3%81%ae%e6%a6%82%e8%a6%81%e3%81%a8%e4%bb%95%e6%a7%98)
+  - [2.1 各RTCの仕様](#21-%e5%90%84rtc%e3%81%ae%e4%bb%95%e6%a7%98)
+    - [2.1.1 kinect RTC](#211-kinect-rtc)
+    - [2.1.2 URG RTC](#212-urg-rtc)
+    - [2.1.3 object_tracking_concierge RTC](#213-objecttrackingconcierge-rtc)
+    - [2.1.4 TrajectoryPrediction RTC](#214-trajectoryprediction-rtc)
+- [3. 軌跡予測RTC](#3-%e8%bb%8c%e8%b7%a1%e4%ba%88%e6%b8%acrtc)
 
 # 1. 追従中の人の軌跡を予測するRTC概要 
 ## 1.1 はじめに 
@@ -36,20 +42,40 @@
 ### 1.3.2 測域センサ  
 測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．(参考文献：https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
 <img src="./Image_for_Manual/URG.png" width="40%">
-
+図2 測域センサ
 
 ### 1.3.3 Depthセンサ  
 DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
 <img src="./Image_for_Manual/Xtion.png" width="80%">
-
+図3 Depthセンサ
 
 # 2. 本システムの各RTCの概要と仕様  
-図4に本システムのRTC図を示す．  
-<img src="./Image_for_Manual/RTCs.png" width="80%">
+本システムは，"Kinect RTC"，"URG RTC"，"object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図4に本システムのRTC図，表2-1に概要を示す．
 
+<img src="./Image_for_Manual/RTCs.png" width="80%">
+図4 RTC図
+
+表2-1 各RTC概要
 | RTC名 | 説明 |
 |:---:|:---:|
 |  kinect  | xtionから人の座標を取得するRTC |
 |  URG  | 測域センサから値を取得するRTC |
 |  object_tracking_concierge  | センサからの値を受け取り指令を出すRTC |
 |  Prediction  | 今回開発した人の軌跡を予測するRTC |
+
+## 2.1 各RTCの仕様  
+### 2.1.1 kinect RTC  
+本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．
+
+
+### 2.1.2 URG RTC
+本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．表2-2にその仕様を示す．複数のコンフィグレーション・パラメータを示したが，本システムを使用するうえでは，特に変更するパラメータは必要ない．
+
+
+### 2.1.3 object_tracking_concierge RTC  
+本RTCはセンサデータを受け取り，移動台車に指令を送る．kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，人との距離が一定になるように速度指令を送る．
+
+
+### 2.1.4 TrajectoryPrediction RTC
+
+# 3. 軌跡予測RTC
