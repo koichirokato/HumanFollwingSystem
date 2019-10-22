@@ -63,7 +63,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 
 ## 2.1 各RTCの仕様  
 ### 2.1.1 kinect RTC  
-本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．
+本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．人の部位名のアウトポートから人の座標(x, y, z)を出力する．本システムでは user_info からの文字列を使用する．
 
 
 ### 2.1.2 URG RTC
