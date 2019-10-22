@@ -17,22 +17,19 @@
     - [2.1.2 URG RTC](#212-urg-rtc)
     - [2.1.3 object_tracking_concierge RTC](#213-objecttrackingconcierge-rtc)
     - [2.1.4 TrajectoryPrediction RTC](#214-trajectoryprediction-rtc)
-- [3. 軌跡予測RTC](#3-%e8%bb%8c%e8%b7%a1%e4%ba%88%e6%b8%acrtc)
+- [3. 軌跡予測RTC(TrajectoryPrediction RTC)](#3-%e8%bb%8c%e8%b7%a1%e4%ba%88%e6%b8%acrtctrajectoryprediction-rtc)
 
 # 1. 追従中の人の軌跡を予測するRTC概要 
 ## 1.1 はじめに 
 　近年，サービスロボットの市場が急激に拡大すると予測されている．人と共存するサービスロボットは，高齢者の介護や商業施設での道案内，外国人との対話など，直接人と関わる場合が多く，これらの場合では，できるだけ人の近くにロボットがいることが好ましい．そのためにロボットには人物追従の機能は必要不可欠である．人とロボットがやりとりを行う際にロボットは人の動きを見て動く必要があり，ロボットが決まった経路を移動するよりも，ロボットが自由に動く方が適しているからである．本研究室では，RTミドルウェアを用いて追従ロボットの研究が行われてきた．追従ロボットに必要不可欠な機能として，特定の人物（ターゲット）を追従すること，ターゲットを見失った際に正確に人物を再検出するロバスト性を持つこと，そのターゲットを再追従することが挙げられる．そこで，追従精度の向上を目的に予め機械学習で学習した予測器を用いて，追従中にリアルタイムでターゲットの軌跡を予測するRTCを開発した．
 
 ## 1.2 開発・動作環境  
-- PC1
-  - OS:Windows7
-  - OpenRTM-aist1.1.2(C++, 32bit版)
-  - CMake
-  - OpenNI
-- PC2
-  - OS:Windows10
-  - OpenRTM-aist1.2.0()
-  - Python3.7
+- OS:Windows7
+- OpenRTM-aist1.2.0(32bit版)
+- CMake
+- OpenNI
+- Python 3.7
+
 
 ## 1.3 使用機器  
 ### 1.3.1 移動台車  
@@ -41,21 +38,22 @@
 
 ### 1.3.2 測域センサ  
 測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．(参考文献：https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
-<img src="./Image_for_Manual/URG.png" width="40%">
+<img src="./Image_for_Manual/URG.png" width="40%">  
 図2 測域センサ
 
 ### 1.3.3 Depthセンサ  
 DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
-<img src="./Image_for_Manual/Xtion.png" width="80%">
+<img src="./Image_for_Manual/Xtion.png" width="40%">  
 図3 Depthセンサ
 
 # 2. 本システムの各RTCの概要と仕様  
 本システムは，"Kinect RTC"，"URG RTC"，"object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図4に本システムのRTC図，表2-1に概要を示す．
 
-<img src="./Image_for_Manual/RTCs.png" width="80%">
+<img src="./Image_for_Manual/RTCs.png" width="80%">  
 図4 RTC図
 
 表2-1 各RTC概要
+
 | RTC名 | 説明 |
 |:---:|:---:|
 |  kinect  | xtionから人の座標を取得するRTC |
@@ -73,9 +71,12 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 
 
 ### 2.1.3 object_tracking_concierge RTC  
-本RTCはセンサデータを受け取り，移動台車に指令を送る．kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，人との距離が一定になるように速度指令を送る．
+本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．
 
 
 ### 2.1.4 TrajectoryPrediction RTC
+本RTCは今回開発した人の移動軌跡を予測するRTCである． object_tracking_concierge RTCからワールド座標系の人の位置座標を受け取り，それをもとに軌跡の予測をする．
 
-# 3. 軌跡予測RTC
+
+# 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
+本RTCはsocial-lstmを使用して人の軌跡を予測するRTCである．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
