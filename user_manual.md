@@ -27,15 +27,15 @@
 ## 1.3 使用機器  
 本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサとして ASUS社の Xtion Pro LIVEⓇ，腹部には測域センサとして北陽電機株式会社の URG-04LX-UG01が搭載されている．
 
-<img src="https://github.com/koichirokato/HumanFollwingSystem/blob/master/Image_for_Manual/concierge.png">
+<img src="./Image_for_Manual/concierge.png">
 
 # 2. 本システムの各RTCの概要と仕様  
 図2に本システムのRTC図を示す．
-<img src="https://github.com/koichirokato/HumanFollwingSystem/blob/master/Image_for_Manual/RTC.png">
+<img src="./Image_for_Manual/RTC.png">
 
 | RTC名 | 説明 |
 |:---:|:---:|
-|kinect|xtionから人の座標を取得するRTC|
-|URG|測域センサから値を取得するRTC|
-|object_tracking_concierge|センサからの値を受け取り指令を出すRTC|
-|Prediction|今回開発した人の軌跡を予測するRTC|
+|  kinect  | xtionから人の座標を取得するRTC |
+|  URG  | 測域センサから値を取得するRTC |
+|  object_tracking_concierge  | センサからの値を受け取り指令を出すRTC |
+|  Prediction  | 今回開発した人の軌跡を予測するRTC |
