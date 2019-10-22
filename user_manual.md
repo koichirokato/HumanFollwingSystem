@@ -8,6 +8,9 @@
   - [1.1 はじめに](#11-%e3%81%af%e3%81%98%e3%82%81%e3%81%ab)
   - [1.2 開発・動作環境](#12-%e9%96%8b%e7%99%ba%e3%83%bb%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83)
   - [1.3 使用機器](#13-%e4%bd%bf%e7%94%a8%e6%a9%9f%e5%99%a8)
+    - [1.3.1 移動台車](#131-%e7%a7%bb%e5%8b%95%e5%8f%b0%e8%bb%8a)
+    - [1.3.2 測域センサ](#132-%e6%b8%ac%e5%9f%9f%e3%82%bb%e3%83%b3%e3%82%b5)
+    - [1.3.3 Depthセンサ](#133-depth%e3%82%bb%e3%83%b3%e3%82%b5)
 - [2. 本システムの各RTCの概要と仕様](#2-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e5%90%84rtc%e3%81%ae%e6%a6%82%e8%a6%81%e3%81%a8%e4%bb%95%e6%a7%98)
 
 # 1. 追従中の人の軌跡を予測するRTC概要 
@@ -24,14 +27,22 @@
   - OS:Windows10
   - OpenRTM-aist1.2.0()
   - Python3.7
-## 1.3 使用機器  
-本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサとして ASUS社の Xtion Pro LIVEⓇ，腹部には測域センサとして北陽電機株式会社の URG-04LX-UG01が搭載されている．
 
-<img src="./Image_for_Manual/concierge.png">
+## 1.3 使用機器  
+### 1.3.1 移動台車  
+本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサ，腹部には測域センサが搭載されている．
+<img src="./Image_for_Manual/concierge.png" width="80%">
+
+### 1.3.2 測域センサ  
+測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に概要を示す．
+
+### 1.3.3 Depthセンサ  
+DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．
+OpenNIを用いて人の骨格情報を取得する
 
 # 2. 本システムの各RTCの概要と仕様  
 図2に本システムのRTC図を示す．
-<img src="./Image_for_Manual/RTC.png">
+<img src="./Image_for_Manual/RTC.png" width="80%">
 
 | RTC名 | 説明 |
 |:---:|:---:|
