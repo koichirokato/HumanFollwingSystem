@@ -34,15 +34,18 @@
 <img src="./Image_for_Manual/concierge.png" width="60%">
 
 ### 1.3.2 測域センサ  
-測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に概要を示す．
+測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．  
+<img src="./Image_for_Manual/URG.png" width="40%">
+
 
 ### 1.3.3 Depthセンサ  
-DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．
-OpenNIを用いて人の骨格情報を取得する
+DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．  
+<img src="./Image_for_Manual/Xtion.png" width="80%">
+
 
 # 2. 本システムの各RTCの概要と仕様  
-図2に本システムのRTC図を示す．  
-<img src="./Image_for_Manual/RTC.png" width="80%">
+図4に本システムのRTC図を示す．  
+<img src="./Image_for_Manual/RTCs.png" width="80%">
 
 | RTC名 | 説明 |
 |:---:|:---:|
