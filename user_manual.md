@@ -31,7 +31,7 @@
 ## 1.3 使用機器  
 ### 1.3.1 移動台車  
 本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサ，腹部には測域センサが搭載されている．
-<img src="./Image_for_Manual/concierge.png" width="80%">
+<img src="./Image_for_Manual/concierge.png" width="60%">
 
 ### 1.3.2 測域センサ  
 測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に概要を示す．
