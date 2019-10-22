@@ -1,12 +1,14 @@
-<h1>HumanFollwingSystem</h1>
-
-***  
+<h1>HumanFollwingSystem</h1> 
 
 <h2>「追従中の人の軌跡を予測するRTC」</h2>
 
+<<<<<<< HEAD
 ***  
 
 本システムは次の5つのRTCから構成されています．  
+=======
+本システムは次の4つのRTCから構成されています．  
+>>>>>>> 4c215a35e80927bedb5b97790602f760c53f7f34
 
 - URG RTC
   - URG-04LXのセンサデータを取得するRTC
@@ -19,3 +21,5 @@
 - TrajectoryPrediction RTC
   - 今回開発した追従対象者の軌跡を予測するRTC
 
+詳細のマニュアルは以下にあります．
+https://github.com/koichirokato/HumanFollwingSystem/blob/master/user_manual.md
