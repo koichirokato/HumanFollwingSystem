@@ -83,7 +83,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．人の部位名のアウトポートから人の座標(x, y, z)を出力する．また，人のid，右手，右ひじ，右肩の情報を文字列にしたデータを user_info から出力している．今回はこのOutportを用いる．  
 
 <div align="center">
-<img src="./Image_for_Manual/KinectComp.png" width="40%"> 
+<img src="./Image_for_Manual/KinectComp.PNG" width="40%"> 
 </div>
 
 
@@ -91,28 +91,28 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．表2-2にその仕様を示す．複数のコンフィグレーション・パラメータを示したが，本システムを使用するうえでは，特に変更するパラメータは必要ない．  
 
 <div align="center">
-<img src="./Image_for_Manual/URGComp.png" width="25%"> 
+<img src="./Image_for_Manual/URGComp.PNG" width="25%"> 
 </div>
 
  - Concierge_Type3_verOLD  
 本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリを出力する．  
 
 <div align="center">
-<img src="./Image_for_Manual/Concierge_Type3_VerOLDComp.png" width="40%"> 
+<img src="./Image_for_Manual/Concierge_Type3_VerOLDComp.PNG" width="40%"> 
 </div>
 
  - object_tracking_concierge RTC  
 本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．  
 
 <div align="center">
-<img src="./Image_for_Manual/object_tracking_conciergeComp.png" width="40%"> 
+<img src="./Image_for_Manual/object_tracking_conciergeComp.PNG" width="40%"> 
 </div>
 
  - TrajectoryPrediction RTC  
 本RTCは今回開発した人の移動軌跡を予測するRTCである． object_tracking_concierge RTCからワールド座標系の人の位置座標を受け取り，それをもとに軌跡の予測をする．詳細は次章にて解説する．  
 
 <div align="center">
-<img src="./Image_for_Manual/TrajectoryPredictionComp.png" width="50%"> 
+<img src="./Image_for_Manual/TrajectoryPredictionComp.PNG" width="50%"> 
 </div>
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
@@ -121,7 +121,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．  
 
 <div align="center">
-<img src="./Image_for_Manual/TrajectoryPredictionComp.png" width="100%"> 
+<img src="./Image_for_Manual/TrajectoryPredictionComp.PNG" width="100%"> 
 </div>
 
 
