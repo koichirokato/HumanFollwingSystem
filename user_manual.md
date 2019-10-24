@@ -35,17 +35,21 @@
 <div align="center"> 
 <img src="./Image_for_Manual/concierge.png" width="60%">
 </div>
+
 <div style="text-align: center;">図1 移動台車</div>  
 
 ### 1.3.2 測域センサ  
 測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．(参考文献：https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
+
 <div align="center">
 <img src="./Image_for_Manual/URG.png" width="40%">
 </div>  
+
 <div style="text-align: center;">図2 測域センサ</div>
 
 ### 1.3.3 Depthセンサ  
 DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
+
 <div align="center">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
 </div>
@@ -58,6 +62,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div align="center">
 <img src="./Image_for_Manual/RTCs.png" width="80%"> 
 </div>
+
 <div style="text-align: center;">図4 RTC図
 </div>
 
@@ -101,6 +106,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．
 
 表 3-1 TrajectoryPrediction RTCポート
+
 |In/Out| Port名 | データ型 | 機能 | データの例 |
 |:---: |:---: |:---:    |:---:|  :---:|
 |In    |HumanPoint|TimedDoubleSeq|人の座標を受け取る|HumanPoint.data.[0] = 人のx座標  HumanPoint.data.[1] = 人のy座標|
