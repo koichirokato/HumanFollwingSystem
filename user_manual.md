@@ -22,12 +22,15 @@
 　近年，サービスロボットの市場が急激に拡大すると予測されている．人と共存するサービスロボットは，高齢者の介護や商業施設での道案内，外国人との対話など，直接人と関わる場合が多く，これらの場合では，できるだけ人の近くにロボットがいることが好ましい．そのためにロボットには人物追従の機能は必要不可欠である．人とロボットがやりとりを行う際にロボットは人の動きを見て動く必要があり，ロボットが決まった経路を移動するよりも，ロボットが自由に動く方が適しているからである．本研究室では，RTミドルウェアを用いて追従ロボットの研究が行われてきた．追従ロボットに必要不可欠な機能として，特定の人物（ターゲット）を追従すること，ターゲットを見失った際に正確に人物を再検出するロバスト性を持つこと，そのターゲットを再追従することが挙げられる．そこで，追従精度の向上を目的に予め機械学習で学習した予測器を用いて，追従中にリアルタイムでターゲットの軌跡を予測するRTCを開発した．
 
 ## 1.2 開発・動作環境  
-- OS:Windows7
-- OpenRTM-aist1.2.0(32bit版)
-- CMake
-- OpenNI
-- Python 3.7
-
+- PC ①
+  - OS : Windows7
+  - OpenRTM-aist1.2.0(32bit版)
+  - CMake
+  - OpenNI
+- PC ②
+  - OS : Windows 10
+  - OpenRTM-aist1.2.0(64bit版)
+  - Python 3.7.2 (64bit版)
 
 ## 1.3 使用機器  
 ### 1.3.1 移動台車  
@@ -36,7 +39,9 @@
 <img src="./Image_for_Manual/concierge.png" width="60%">
 </div>
 
-<div style="text-align: center;">図1 移動台車</div>  
+<div style="text-align: center;">
+図1-1 移動台車
+</div>
 
 ### 1.3.2 測域センサ  
 測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．(参考文献：https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
@@ -45,7 +50,9 @@
 <img src="./Image_for_Manual/URG.png" width="40%">
 </div>  
 
-<div style="text-align: center;">図2 測域センサ</div>
+<div style="text-align: center;">
+図1-2 測域センサ
+</div>
 
 ### 1.3.3 Depthセンサ  
 DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
@@ -53,7 +60,10 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div align="center">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
 </div>
-<div style="text-align: center;">図3 Depthセンサ</div>
+
+<div style="text-align: center;">
+図1-3 Depthセンサ
+</div>
 
 
 # 2. 本システムの各RTCの概要と仕様  
@@ -63,10 +73,14 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <img src="./Image_for_Manual/RTC.png" width="80%"> 
 </div>
 
-<div style="text-align: center;">図4 RTC図
+<div style="text-align: center;">
+図2-1 RTC図
 </div>
 
-<div style="text-align: center;">表2-1 各RTC概要</div>
+
+<div style="text-align: center;">
+表2-1 各RTC概要
+</div>
 
 
 | RTC名                       | 説明 |
@@ -86,6 +100,9 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <img src="./Image_for_Manual/KinectComp.PNG" width="40%"> 
 </div>
 
+<div style="text-align: center;">
+図2-2 Kinect RTC
+</div>
 
  - URG RTC  
 本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．表2-2にその仕様を示す．複数のコンフィグレーション・パラメータを示したが，本システムを使用するうえでは，特に変更するパラメータは必要ない．  
@@ -94,11 +111,19 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <img src="./Image_for_Manual/URGComp.PNG" width="25%"> 
 </div>
 
- - Concierge_Type3_verOLD  
+<div style="text-align: center;">
+図2-3 URG RTC
+</div>
+
+ - Concierge_Type3_verOLD RTC  
 本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリを出力する．  
 
 <div align="center">
 <img src="./Image_for_Manual/Concierge_Type3_VerOLDComp.PNG" width="40%"> 
+</div>
+
+<div style="text-align: center;">
+図2-4 Concierge_Type3_verOLD RTC
 </div>
 
  - object_tracking_concierge RTC  
@@ -108,11 +133,20 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <img src="./Image_for_Manual/object_tracking_conciergeComp.PNG" width="40%"> 
 </div>
 
+<div style="text-align: center;">
+図2-5 object_tracking_concierge RTC
+</div>
+
+
  - TrajectoryPrediction RTC  
 本RTCは今回開発した人の移動軌跡を予測するRTCである． object_tracking_concierge RTCからワールド座標系の人の位置座標を受け取り，それをもとに軌跡の予測をする．詳細は次章にて解説する．  
 
 <div align="center">
 <img src="./Image_for_Manual/TrajectoryPredictionComp.PNG" width="50%"> 
+</div>
+
+<div style="text-align: center;">
+図2-6 TrajectoryPrediction RTC
 </div>
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
@@ -124,8 +158,15 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <img src="./Image_for_Manual/TrajectoryPredictionComp.PNG" width="100%"> 
 </div>
 
+<div style="text-align: center;">
+図3-1 TrajectoryPrediction RTC
+
+<br>
+<br>
+<br>
 
 表 3-1 TrajectoryPrediction RTCポート  
+</div>
 
 |In/Out| Port名 | データ型 | 機能 | データの例 |
 |:---: |:---: |:---:    |:---:|  :---:|
