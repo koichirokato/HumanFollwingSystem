@@ -105,7 +105,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．  
 
 <div align="center">
-<img src="./Image_for_Manual/oject_tracking_conciergeComp.png" width="40%"> 
+<img src="./Image_for_Manual/object_tracking_conciergeComp.png" width="40%"> 
 </div>
 
  - TrajectoryPrediction RTC  
