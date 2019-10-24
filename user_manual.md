@@ -66,9 +66,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: center;">図4 RTC図
 </div>
 
-<div style="text-align: center;">
-表2-1 各RTC概要
-</div>
+<div style="text-align: center;">表2-1 各RTC概要</div>
 
 
 | RTC名                       | 説明 |
@@ -82,30 +80,30 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 
 ## 2.1 各RTCの仕様  
  - Kinect RTC  
-本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．人の部位名のアウトポートから人の座標(x, y, z)を出力する．また，人のid，右手，右ひじ，右肩の情報を文字列にしたデータを user_info から出力している．今回はこのOutportを用いる．
+本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．人の部位名のアウトポートから人の座標(x, y, z)を出力する．また，人のid，右手，右ひじ，右肩の情報を文字列にしたデータを user_info から出力している．今回はこのOutportを用いる．  
 
 
- - URG RTC
+ - URG RTC  
 本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．表2-2にその仕様を示す．複数のコンフィグレーション・パラメータを示したが，本システムを使用するうえでは，特に変更するパラメータは必要ない．  
 
- - Concierge_Type3_verOLD
-本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリを出力する．
+ - Concierge_Type3_verOLD  
+本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリを出力する．  
 
 
  - object_tracking_concierge RTC  
-本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．
+本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．  
 
 
- - TrajectoryPrediction RTC
-本RTCは今回開発した人の移動軌跡を予測するRTCである． object_tracking_concierge RTCからワールド座標系の人の位置座標を受け取り，それをもとに軌跡の予測をする．詳細は次章にて解説する．
+ - TrajectoryPrediction RTC  
+本RTCは今回開発した人の移動軌跡を予測するRTCである． object_tracking_concierge RTCからワールド座標系の人の位置座標を受け取り，それをもとに軌跡の予測をする．詳細は次章にて解説する．  
 
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
 本RTCは今回新規に開発したRTCである．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
 
-現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．
+現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．  
 
-表 3-1 TrajectoryPrediction RTCポート
+表 3-1 TrajectoryPrediction RTCポート  
 
 |In/Out| Port名 | データ型 | 機能 | データの例 |
 |:---: |:---: |:---:    |:---:|  :---:|
@@ -113,19 +111,17 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 |Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[0] = 人のx座標  PredictionHumanPoint.data.[1] = 人のy座標|
 
 # 3.1 必要なパッケージ
-このRTCでは～を用いているため，動作させるにはpip等で以下のモジュールをインストールする必要がある．また，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．
+このRTCでは～を用いているため，動作させるにはpip等で以下のモジュールをインストールする必要がある．また，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．  
 - numpy
 - pandas
 - pytorch
 
 
 # 4. 本システムの使用方法
-object_traking_concierge RTCはC++で実装されているため，各自の環境でビルドを行う必要がある．
+object_traking_concierge RTCはC++で実装されているため，各自の環境でビルドを行う必要がある．  
 TrajectoryPrediction RTCはPython言語のため .pyファイルから実行できる．  
 
 
 ポートを図なんとかのように接続し，各コンポーネントをアクティベートする．PrimeSenseとURGの表示を図なんとかのようにし，右手を上げる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミングで追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
 
 今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する．  
-
-
