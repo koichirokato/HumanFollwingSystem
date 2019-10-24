@@ -67,7 +67,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 
 
 # 2. 本システムの各RTCの概要と仕様  
-本システムは，"Kinect RTC"，"URG RTC"，"object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図4に本システムのRTC図，表2-1に概要を示す．
+本システムは，"Kinect RTC"，"URG RTC"，"Concierge_Type3_verOLD","object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図4に本システムのRTC図，表2-1に概要を示す．
 
 <div align="center">
 <img src="./Image_for_Manual/RTC.png" width="80%"> 
