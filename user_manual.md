@@ -203,7 +203,7 @@ TrajectoryPrediction RTCはPython言語のため .pyファイルから実行で�
 <br>
 
 <div align="left">
-<img src="./Image_for_Manual/primesense.png" width="100%"> 
+<img src="./Image_for_Manual/primesense.png" width="50%"> 
 </div>
 
 <div style="text-align: left;">
