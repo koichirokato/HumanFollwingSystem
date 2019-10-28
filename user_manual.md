@@ -107,7 +107,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 
 
 # 2. 本システムの各RTCの概要と仕様  
-本システムは，"Kinect RTC"，"URG RTC"，"Concierge_Type3_verOLD","object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図2-1に本システムのRTC図，表2-1に概要を示す．
+本システムは，"Kinect RTC"，"URG RTC"，"Concierge_Type3_verOLD"，"object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図2-1に本システムのRTC図，表2-1に概要を示す．
 
 <div align="left">
 <img src="./Image_for_Manual/RTC.png" width="80%"> 
@@ -129,7 +129,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 |  URG                        | 測域センサから値を取得するRTC |
 |  Concierge_Type3_verOLD     | 移動台車を動かすRTC |
 |  object_tracking_concierge  | センサからの値を受け取り指令を出すRTC |
-|  Prediction                 | 今回開発した人の軌跡を予測するRTC |
+|  TrajectoryPrediction                 | 今回開発した人の軌跡を予測するRTC |
 
 
 ## 2.1 各RTCの仕様  
@@ -249,11 +249,11 @@ object_tracking_concierge RTCはC++言語で書かれているため，ビルド
 
 
 ## 4.4 システムの起動
-- PC①，PC②共通
+- PC①，PC②共通  
 Start Naming Service とeclipseを起動する．ワークスペースの選択ではRTCのフォルダがあるワークスペースを選択する．また，2台のPCが同ネットワークに接続されている必要がある．  
 
 
- - PC①
+ - PC①  
 PC①で動作させるRTCはC++で書かれているため，exeファイルから起動させる．  
 
 | RTC名                       | 起動ファイル |
@@ -264,10 +264,20 @@ PC①で動作させるRTCはC++で書かれているため，exeファイルか
 |  object_tracking_concierge  | object_tracking_conciergeComp.exe |
 <br>
 
- - PC②
+ - PC②  
 TrajectoryPrediction RTCはPython言語で書かれているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図なんとかのようにファイルを選択して実行する．<br>  
     `Python TrajectoryPrediction.py`  
 <br>
+
+<div align="left">
+<img src="./Image_for_Manual/TrajectoryPrediction_py.png" width="100%"> 
+</div>
+
+<div style="text-align: left;">
+図4-1 TrajectoryPrediction.py
+</div>
+<br>
+
 
 ## 4.5 RTCの接続
 ### 4.5.1 PC間の接続
@@ -285,7 +295,7 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 </div>
 
 <div style="text-align: left;">
-図4-1 表示画面
+図4-2 表示画面
 </div>
 <br>
 
@@ -297,7 +307,7 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 </div>
 
 <div style="text-align: left;">
-図4-2 追従開始/終了のポーズ
+図4-3 追従開始/終了のポーズ
 </div>
 <br> 
 
