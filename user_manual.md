@@ -196,9 +196,9 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 <div style="page-break-before:always"></div>
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
-本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[^3]がSocial-LSTM[^4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
+本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[^3]がSocial-LSTM[^4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットがETH Dataset[^5]のため，ワールド座標系の人の座標をもとに予測をする．  
 
-現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．  
+現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`./data/test/crowds/input.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `./result/SOCIALLSTM/LSTM/test/crowds/output.txt`に予測した10フレーム分のデータを出力する．    
 
 <div align="left">
 <img src="./Image_for_Manual/TrajectoryPredictionComp.png" width="100%"> 
@@ -221,31 +221,39 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 ## 3.2 予測結果  
 今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は5フレーム分を受け取り，その座標をロボットに追従させる．安全面を考慮して，予測結果が人を見失った座標から大きく離れていた場合はその予測を適応しない．  
 
+```
+***ここにグラフか何かをいれる***
+```
+
+
 <div style="page-break-before:always"></div>
 
 # 4. 本システムの使用方法
 ## 4.1 ハードウェアの準備
-本システムではPCを2台使用する．移動ロボット，センサーに接続するPCと予測器を動かすPCとなっている．前者をPC①，後者をPC②とする．  
-PC①にURG，Xtion，移動台車を接続する．
+本マニュアルでは，本研究室で使用しているロボットの既存の環境を流用するために，開発したRTCの動作環境と異なる環境のPCを使用した．そのためにPCを2台使用している．  
+移動ロボット，センサーに接続するPCと開発したRTCを動かすPCとなっている．前者をPC①，後者をPC②とする．  
+PC①にURG，Xtion，移動台車を接続する．  
 
 ## 4.2 動作環境
 以下に本稿で使用するシステムの動作環境を示す．
  - PC①
    - OS : Windows 7
-   - **OpenNIが使用できるPC**
+   - OpenRTM 1.2.0
+   - **OpenNI 2**
  - PC②
    - OS : Windows 10
-   - **OpenRTM 1.2.0 64bit版，Python3系 64bit版が使用できるPC**
+   - **OpenRTM 1.2.0 64bit版**
+   - **Python3 64bit版が使用**
 
-また，PC②のTrjectoryPrediction RTCを動作させるにはpip等で以下のモジュールをインストールする必要がある．また，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．  
+また，PC②のTrjectoryPrediction RTCを動作させるにはpip等で以下のモジュールをインストールする必要がある．ただし留意点として，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．  
 - numpy  
 - pandas  
-- pytorch  
+- pytorch 1.3.0+cpu  
 
 
 ## 4.3 RTCのダウンロード
 GithubからPC①にobject_tracking_concierge，PC②にTrajectoryPredictionをダウンロードする．  
-object_tracking_concierge RTCはC++言語で書かれているため，ビルドを行う必要がある．
+object_tracking_concierge RTCはC++言語で実装されているため，ビルドを行う必要がある．
 
 
 ## 4.4 システムの起動
@@ -254,7 +262,7 @@ Start Naming Service とeclipseを起動する．ワークスペースの選択�
 
 
  - PC①  
-PC①で動作させるRTCはC++で書かれているため，exeファイルから起動させる．  
+PC①で動作させるRTCはC++で実装されているため，exeファイルから起動させる．  
 
 | RTC名                       | 起動ファイル |
 |:---:                        |:---:|
@@ -265,7 +273,7 @@ PC①で動作させるRTCはC++で書かれているため，exeファイルか
 <br>
 
  - PC②  
-TrajectoryPrediction RTCはPython言語で書かれているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図なんとかのようにファイルを選択して実行する．<br>  
+TrajectoryPrediction RTCはPython言語で書かれているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．<br>  
     `Python TrajectoryPrediction.py`  
 <br>
 
@@ -322,3 +330,8 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
  [^3]: 東京女子大学加藤研究室 (仮)  
 
  [^4]: [Social-LSTM](http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html)  
+
+ [^5]: Pellegrini, S., Ess, A., Schindler, K. and van Gool, L.:You'll
+Never Walk Alone: Modeling Social Behavior for Multi-target
+Tracking, Proc. IEEE International Conference on Computer
+Vision (ICCV 2009), pp. 261-268(2009).
