@@ -309,7 +309,6 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 
  [^2]: [Xtion](https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
 
- [^3]: 東京女子大学加藤研究室 (仮)
+ [^3]: 東京女子大学加藤研究室 (仮)  
 
  [^4]: [Social-LSTM](http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html)  
-
