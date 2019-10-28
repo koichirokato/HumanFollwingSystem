@@ -17,6 +17,7 @@
 - [3.1 必要なパッケージ](#31-%e5%bf%85%e8%a6%81%e3%81%aa%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8)
 - [3.2 予測結果](#32-%e4%ba%88%e6%b8%ac%e7%b5%90%e6%9e%9c)
 - [4. 本システムの使用方法](#4-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95)
+- [5. 参考文献](#5-%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae)
 
 # 1. 追従中の人の軌跡を予測するRTC概要 
 ## 1.1 はじめに 
@@ -45,7 +46,7 @@
 </div>
 
 ### 1.3.2 測域センサ  
-測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．(参考文献：https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
+測域センサは北陽電機株式会社のURG-04LX-UG01[1]を用いた．図1-2に外観，表1-1に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/URG.png" width="40%">
@@ -55,8 +56,21 @@
 図1-2 測域センサ
 </div>
 
+表 1-1 URG-04LX-UG01の主な仕様
+
+
+|項目|仕様|
+|:---:|:---|
+|光源|半導体レーザ：λ=785 [nm] ( FDAレーザ安全クラス1 )|
+|測距範囲|距離：0.02~5.6[m] <br> 角度：240[°]|
+|測距精度|0.06~1[m]：±30[mm], 1~4[m]：距離の3[%]|
+|測距分解能|約1[mm]|
+|角度分解能|ステップ角：約0.36[°]|
+|走査時間|100[ms/scan]|
+
+
 ### 1.3.3 Depthセンサ  
-DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
+DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観，表1-2に主な仕様を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
 
 <div align="left">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
@@ -65,6 +79,18 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: left;">
 図1-3 Depthセンサ
 </div>
+
+
+表 1-2 Xtion PRO LIVE の主な使用
+
+|項目|仕様|
+|:---:|:---|
+|センサー|RGBセンサ，深度センサ，ステレオマイク|
+|深度センサ解像度|640×480ドット (VGA) /30fps <br> 320×240ドット (QVGA) /60fps|
+|センサ有効範囲|水平58[°]，垂直45[°]，対角70[°]|
+|センサ有効距離|0.8m~3.5m|
+
+
 
 
 # 2. 本システムの各RTCの概要と仕様  
@@ -212,3 +238,7 @@ TrajectoryPrediction RTCはPython言語のため .pyファイルから実行で�
 <br>
 
 今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する．  
+
+
+# 5. 参考文献  
+ - URG：https://www.hokuyo-aut.co.jp/search/single.php?serial=17
