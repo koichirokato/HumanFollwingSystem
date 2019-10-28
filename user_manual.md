@@ -15,6 +15,7 @@
   - [2.1 各RTCの仕様](#21-%e5%90%84rtc%e3%81%ae%e4%bb%95%e6%a7%98)
 - [3. 軌跡予測RTC(TrajectoryPrediction RTC)](#3-%e8%bb%8c%e8%b7%a1%e4%ba%88%e6%b8%acrtctrajectoryprediction-rtc)
 - [3.1 必要なパッケージ](#31-%e5%bf%85%e8%a6%81%e3%81%aa%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8)
+- [3.2 予測結果](#32-%e4%ba%88%e6%b8%ac%e7%b5%90%e6%9e%9c)
 - [4. 本システムの使用方法](#4-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95)
 
 # 1. 追従中の人の軌跡を予測するRTC概要 
@@ -171,20 +172,23 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 |In/Out| Port名 | データ型 | 機能 | データの例 |
 |:---: |:---: |:---:    |:---:|  :---:|
 |In    |HumanPoint|TimedDoubleSeq|人の座標を受け取る|HumanPoint.data.[0] = 人のx座標  HumanPoint.data.[1] = 人のy座標|
-|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[0] = 人のx座標  PredictionHumanPoint.data.[1] = 人のy座標|
+|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[i] = 人のx座標(i=1~10の奇数)  PredictionHumanPoint.data.[i] = 人のy座標(i=1~10の偶数)|  
 
-# 3.1 必要なパッケージ
+# 3.1 必要なパッケージ  
 このRTCでは～を用いているため，動作させるにはpip等で以下のモジュールをインストールする必要がある．また，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．  
-- numpy
-- pandas
-- pytorch
+- numpy  
+- pandas  
+- pytorch  
+
+# 3.2 予測結果  
+今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は5フレームを受け取り，人を見失った座標から大きく離れていた場合人との．  
 
 
 # 4. 本システムの使用方法
 object_traking_concierge RTCはC++で実装されているため，各自の環境でビルドを行う必要がある．  
 TrajectoryPrediction RTCはPython言語のため .pyファイルから実行できる．  
 
-
-ポートを図なんとかのように接続し，各コンポーネントをアクティベートする．PrimeSenseとURGの表示を図なんとかのようにし，右手を上げる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミングで追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
+ポートを図2-1のように接続し，各コンポーネントをアクティベートする．PrimeSense viewerとURGの表示を図なんとかのようにし，右手を上げる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミングで追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
 
 今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する．  
+
