@@ -17,6 +17,12 @@
 - [3.1 必要なパッケージ](#31-%e5%bf%85%e8%a6%81%e3%81%aa%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8)
 - [3.2 予測結果](#32-%e4%ba%88%e6%b8%ac%e7%b5%90%e6%9e%9c)
 - [4. 本システムの使用方法](#4-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95)
+- [4.1 ハードウェアの準備](#41-%e3%83%8f%e3%83%bc%e3%83%89%e3%82%a6%e3%82%a7%e3%82%a2%e3%81%ae%e6%ba%96%e5%82%99)
+- [4.2 動作環境](#42-%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83)
+- [4.3 RTCのダウンロード](#43-rtc%e3%81%ae%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89)
+- [4.4 システムの起動](#44-%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e8%b5%b7%e5%8b%95)
+- [4.5 RTCの接続](#45-rtc%e3%81%ae%e6%8e%a5%e7%b6%9a)
+- [4.6 システムの起動](#46-%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e8%b5%b7%e5%8b%95)
 - [5. 参考文献](#5-%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae)
 
 # 1. 追従中の人の軌跡を予測するRTC概要 
@@ -214,10 +220,36 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 
 
 # 4. 本システムの使用方法
-object_traking_concierge RTCはC++で実装されているため，各自の環境でビルドを行う必要がある．  
-TrajectoryPrediction RTCはPython言語のため .pyファイルから実行できる．  
+# 4.1 ハードウェアの準備
+本システムではPCを2台使用する．移動ロボット，センサーに接続するPCと予測器を動かすPCとなっている．前者をPC①，後者をPC②とする．  
+PC①にURG，Xtion，移動台車を接続する．
 
-ポートを図2-1のように接続し，各コンポーネントをアクティベートする．Prime Sense USer Tracker ViewerとURG Dataの表示を図4-1のようにし，右手を上げる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミング(図4-2)で追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
+# 4.2 動作環境
+以下に本稿で使用するシステムの動作環境を示す．
+ - PC①
+   - OS : Windows 7
+   - OpenNIが使用できるPC
+ - PC②
+   - OS : Windows 10
+   - OpenRTM 1.2.0 64bit版，Python3系 64bit版が使用できるPC
+
+
+# 4.3 RTCのダウンロード
+GithubからPC①にobject_tracking_concierge，PC②にTrajectoryPredictionをダウンロードする．  
+object_tracking_concierge RTCはC++言語で書かれているため，ビルドを行う必要がある．
+
+
+# 4.4 システムの起動
+Start Naming Service とeclipseを起動する．ワークスペースの選択ではRTCのフォルダがあるワークスペースを選択する．
+TrajectoryPrediction RTCはPython言語で書かれているためPythonファイルをコマンドプロンプトから以下のように実行するか，図なんとかのようにファイルを選択して実行する．  
+`Python TrajectoryPrediction.py`  
+
+# 4.5 RTCの接続
+4で起動したRTCをSystem Diagram上にドラッグ&ドロップし，ポートを図2-1のように接続する．
+
+
+# 4.6 システムの起動  
+各コンポーネントをアクティベートする．Prime Sense USer Tracker ViewerとURG Dataの表示を図4-1のようにし，右手を上げる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミング(図4-2)で追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
 
 <div align="left">
 <img src="./Image_for_Manual/display_kinect_and_urg.png" width="100%"> 
