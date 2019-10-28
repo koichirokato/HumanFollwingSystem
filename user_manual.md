@@ -58,7 +58,7 @@
 </div>
 
 ### 1.3.2 測域センサ  
-測域センサは北陽電機株式会社のURG-04LX-UG01 [^1] を用いた．図1-2に外観，表1-1に主な仕様を示す．  
+測域センサは北陽電機株式会社のURG-04LX-UG01[^1]を用いた．図1-2に外観，表1-1に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/URG.png" width="40%">
@@ -82,7 +82,7 @@
 
 
 ### 1.3.3 Depthセンサ  
-DepthセンサはASUS社の Xtion Pro LIVEⓇ [^2] を用いた．OpenNIを用いて人の骨格情報を取得する．図1-3に外観，表1-2に主な仕様を示す．  
+DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用いて人の骨格情報を取得する．図1-3に外観，表1-2に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
@@ -196,7 +196,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ [^2] を用いた．OpenNIを用�
 <div style="page-break-before:always"></div>
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
-本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室 [^3] がSocial-LSTM [^4] を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
+本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[^3]がSocial-LSTM[^4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
 
 現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．  
 
@@ -305,11 +305,11 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 
 # 5. 参考文献
 
- [^1]:  [URG](https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
+ [^1]: [URG](https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
 
- [^2]:  [Xtion](https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
+ [^2]: [Xtion](https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
 
- [^3]:  東京女子大学加藤研究室 (仮)
+ [^3]: 東京女子大学加藤研究室 (仮)
 
- [^4]:  [Social-LSTM](http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html)  
+ [^4]: [Social-LSTM](http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html)  
 
