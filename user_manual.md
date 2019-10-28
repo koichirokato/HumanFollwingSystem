@@ -194,7 +194,7 @@ TrajectoryPrediction RTCはPython言語のため .pyファイルから実行で�
 ポートを図2-1のように接続し，各コンポーネントをアクティベートする．Prime Sense USer Tracker ViewerとURG Dataの表示を図4-1のようにし，右手を上げる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミング(図4-2)で追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
 
 <div align="left">
-<img src="./Image_for_Manual/display kinect and urg.png" width="100%"> 
+<img src="./Image_for_Manual/display_kinect_and_urg.png" width="100%"> 
 </div>
 
 <div style="text-align: left;">
