@@ -14,19 +14,17 @@
 - [2. 本システムの各RTCの概要と仕様](#2-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e5%90%84rtc%e3%81%ae%e6%a6%82%e8%a6%81%e3%81%a8%e4%bb%95%e6%a7%98)
   - [2.1 各RTCの仕様](#21-%e5%90%84rtc%e3%81%ae%e4%bb%95%e6%a7%98)
 - [3. 軌跡予測RTC(TrajectoryPrediction RTC)](#3-%e8%bb%8c%e8%b7%a1%e4%ba%88%e6%b8%acrtctrajectoryprediction-rtc)
-  - [3.1 必要なパッケージ](#31-%e5%bf%85%e8%a6%81%e3%81%aa%e3%83%91%e3%83%83%e3%82%b1%e3%83%bc%e3%82%b8)
   - [3.2 予測結果](#32-%e4%ba%88%e6%b8%ac%e7%b5%90%e6%9e%9c)
 - [4. 本システムの使用方法](#4-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95)
   - [4.1 ハードウェアの準備](#41-%e3%83%8f%e3%83%bc%e3%83%89%e3%82%a6%e3%82%a7%e3%82%a2%e3%81%ae%e6%ba%96%e5%82%99)
   - [4.2 動作環境](#42-%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83)
   - [4.3 RTCのダウンロード](#43-rtc%e3%81%ae%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89)
   - [4.4 システムの起動](#44-%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e8%b5%b7%e5%8b%95)
-    - [4.4.1 PC①](#441-pc%e2%91%a0)
-    - [4.4.2 PC②](#442-pc%e2%91%a1)
   - [4.5 RTCの接続](#45-rtc%e3%81%ae%e6%8e%a5%e7%b6%9a)
     - [4.5.1 PC間の接続](#451-pc%e9%96%93%e3%81%ae%e6%8e%a5%e7%b6%9a)
     - [4.5.2 各RTCの接続](#452-%e5%90%84rtc%e3%81%ae%e6%8e%a5%e7%b6%9a)
   - [4.6 システムの起動](#46-%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e8%b5%b7%e5%8b%95)
+    - [4.7 追従の開始](#47-%e8%bf%bd%e5%be%93%e3%81%ae%e9%96%8b%e5%a7%8b)
 - [5. 参考文献](#5-%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae)
 
 # 1. 追従中の人の軌跡を予測するRTC概要 
@@ -211,13 +209,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 |In/Out| Port名 | データ型 | 機能 | データの例 |
 |:---: |:---: |:---:    |:---:|  :---:|
 |In    |HumanPoint|TimedDoubleSeq|人の座標を受け取る|HumanPoint.data.[0] = 人のx座標  HumanPoint.data.[1] = 人のy座標|
-|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[i] = 人のx座標(i=1 - 10の奇数)  PredictionHumanPoint.data.[i] = 人のy座標(i=1 - 10の偶数)|  
-
-## 3.1 必要なパッケージ  
-このRTCでは～を用いているため，動作させるにはpip等で以下のモジュールをインストールする必要がある．また，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．  
-- numpy  
-- pandas  
-- pytorch  
+|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[i] = 人のx座標(i=1 - 10の奇数) <br> PredictionHumanPoint.data.[i] = 人のy座標(i=1 - 10の偶数)|  
 
 ## 3.2 予測結果  
 今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は5フレーム分を受け取り，その座標をロボットに追従させる．安全面を考慮して，予測結果が人を見失った座標から大きく離れていた場合はその予測を適応しない．  
@@ -237,6 +229,11 @@ PC①にURG，Xtion，移動台車を接続する．
    - OS : Windows 10
    - **OpenRTM 1.2.0 64bit版，Python3系 64bit版が使用できるPC**
 
+また，PC②のTrjectoryPrediction RTCを動作させるにはpip等で以下のモジュールをインストールする必要がある．また，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．  
+- numpy  
+- pandas  
+- pytorch  
+
 
 ## 4.3 RTCのダウンロード
 GithubからPC①にobject_tracking_concierge，PC②にTrajectoryPredictionをダウンロードする．  
@@ -247,7 +244,7 @@ object_tracking_concierge RTCはC++言語で書かれているため，ビルド
 Start Naming Service とeclipseを起動する．ワークスペースの選択ではRTCのフォルダがあるワークスペースを選択する．また，2台のPCが同ネットワークに接続されている必要がある．  
 
 
-### 4.4.1 PC①
+ - PC①
 PC①で動作させるRTCはC++で書かれているため，exeファイルから起動させる．  
 
 | RTC名                       | 起動ファイル |
@@ -256,9 +253,10 @@ PC①で動作させるRTCはC++で書かれているため，exeファイルか
 |  URG                        | URGComp.exe |
 |  Concierge_Type3_verOLD     | Concierge_Type3_verOLDComp.exe |
 |  object_tracking_concierge  | object_tracking_conciergeComp.exe |
+<br>
 
-### 4.4.2 PC②
-TrajectoryPrediction RTCはPython言語で書かれているためPythonファイルをコマンドプロンプトから以下のように実行するか，図なんとかのようにファイルを選択して実行する．  
+ - PC②
+TrajectoryPrediction RTCはPython言語で書かれているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図なんとかのようにファイルを選択して実行する．  
 `Python TrajectoryPrediction.py`  
 
 ## 4.5 RTCの接続
@@ -270,7 +268,7 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 
 
 ## 4.6 システムの起動  
-各コンポーネントをアクティベートする．PC①上でPrime Sense USer Tracker ViewerとURG Dataのウィンドウが起動するのでの表示を図4-1のように表示させる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミング(図4-2)で追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
+各コンポーネントをアクティベートする．PC①上でPrime Sense USer Tracker ViewerとURG_Dataのウィンドウが起動するのでの表示を図4-1のように表示させる．URG_Dataのウィンドウはobject_tracking_concierge RTC内でウィンドウプロシージャを使用して表示させているのでこのウィンドウが前面にない場合，動作しない．  
 
 <div align="left">
 <img src="./Image_for_Manual/display_kinect_and_urg.png" width="100%"> 
@@ -281,6 +279,9 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 </div>
 <br>
 
+### 4.7 追従の開始
+右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミング(図4-2)で追従を開始する．追従を終わらせたい場合は再度右手を上げる．今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する． 
+
 <div align="left">
 <img src="./Image_for_Manual/primesense.png" width="50%"> 
 </div>
@@ -288,9 +289,7 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 <div style="text-align: left;">
 図4-2 追従開始/終了のポーズ
 </div>
-<br>
-
-今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する．  
+<br> 
 
 
 # 5. 参考文献  
