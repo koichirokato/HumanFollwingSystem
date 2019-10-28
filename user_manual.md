@@ -36,33 +36,33 @@
 ## 1.3 使用機器  
 ### 1.3.1 移動台車  
 本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサ，腹部には測域センサが搭載されている． 
-<div align="center"> 
+<div align="left"> 
 <img src="./Image_for_Manual/concierge.png" width="60%">
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図1-1 移動台車
 </div>
 
 ### 1.3.2 測域センサ  
 測域センサは北陽電機株式会社のURG-04LX-UG01を用いた．図2に外観，表1にあれを示す．(参考文献：https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/URG.png" width="40%">
 </div>  
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図1-2 測域センサ
 </div>
 
 ### 1.3.3 Depthセンサ  
 DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図1-3 Depthセンサ
 </div>
 
@@ -70,16 +70,16 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 # 2. 本システムの各RTCの概要と仕様  
 本システムは，"Kinect RTC"，"URG RTC"，"Concierge_Type3_verOLD","object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図4に本システムのRTC図，表2-1に概要を示す．
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/RTC.png" width="80%"> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図2-1 RTC図
 </div>
 
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 表2-1 各RTC概要
 </div>
 
@@ -97,44 +97,44 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
  - Kinect RTC  
 本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．人の部位名のアウトポートから人の座標(x, y, z)を出力する．また，人のid，右手，右ひじ，右肩の情報を文字列にしたデータを user_info から出力している．今回はこのOutportを用いる．  
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/KinectComp.PNG" width="40%"> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図2-2 Kinect RTC
 </div>
 
  - URG RTC  
 本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．障害物と人の検知に使用する．Xtionの方で何かのエラーで人を見失った際にはURGからの人のデータで追従を行う．  
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/URGComp.PNG" width="25%"> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図2-3 URG RTC
 </div>
 
  - Concierge_Type3_verOLD RTC  
 本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリを出力する．  
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/Concierge_Type3_VerOLDComp.PNG" width="40%"> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図2-4 Concierge_Type3_verOLD RTC
 </div>
 
  - object_tracking_concierge RTC  
 本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．  
 
-<div align="center">
-<img src="./Image_for_Manual/object_tracking_conciergeComp.PNG" width="40%"> 
+<div align="left">
+<img src="./Image_for_Manual/object_tracking_conciergeComp.PNG" width="50%"> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図2-5 object_tracking_concierge RTC
 </div>
 
@@ -142,11 +142,11 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
  - TrajectoryPrediction RTC  
 本RTCは今回開発した人の移動軌跡を予測するRTCである． object_tracking_concierge RTCからワールド座標系の人の位置座標を受け取り，それをもとに軌跡の予測をする．詳細は次章にて解説する．  
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/TrajectoryPredictionComp.PNG" width="50%"> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図2-6 TrajectoryPrediction RTC
 </div>
 
@@ -155,11 +155,11 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 
 現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．  
 
-<div align="center">
+<div align="left">
 <img src="./Image_for_Manual/TrajectoryPredictionComp.PNG" width="100%"> 
 </div>
 
-<div style="text-align: center;">
+<div style="text-align: left;">
 図3-1 TrajectoryPrediction RTC
 
 <br>
