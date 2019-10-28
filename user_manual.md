@@ -106,7 +106,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 </div>
 
  - URG RTC  
-本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．表2-2にその仕様を示す．複数のコンフィグレーション・パラメータを示したが，本システムを使用するうえでは，特に変更するパラメータは必要ない．  
+本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．障害物と人の検知に使用する．Xtionの方で何かのエラーで人を見失った際にはURGからの人のデータで追従を行う．  
 
 <div align="center">
 <img src="./Image_for_Manual/URGComp.PNG" width="25%"> 
