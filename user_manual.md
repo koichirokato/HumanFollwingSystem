@@ -94,7 +94,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 
 
 # 2. 本システムの各RTCの概要と仕様  
-本システムは，"Kinect RTC"，"URG RTC"，"Concierge_Type3_verOLD","object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図4に本システムのRTC図，表2-1に概要を示す．
+本システムは，"Kinect RTC"，"URG RTC"，"Concierge_Type3_verOLD","object_tracking_concierge RTC"，"TrajectoryPrediction RTC"で構成されている．図2-1に本システムのRTC図，表2-1に概要を示す．
 
 <div align="left">
 <img src="./Image_for_Manual/RTC.png" width="80%"> 
@@ -121,7 +121,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 
 ## 2.1 各RTCの仕様  
  - Kinect RTC  
-本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．表2-2にその仕様を示す．人の部位名のアウトポートから人の座標(x, y, z)を出力する．また，人のid，右手，右ひじ，右肩の情報を文字列にしたデータを user_info から出力している．今回はこのOutportを用いる．  
+本RTCは先述したXtion Pro LiveのセンサデータからOpenNIを使用して人の座標を取得し，出力するRTCである．図2-2にRTCを示す．人の部位名のアウトポートから人の座標(x, y, z)を出力する．また，人のid，右手，右ひじ，右肩の情報を文字列にしたデータを user_info から出力している．今回はこのOutportを用いる．  
 
 <div align="left">
 <img src="./Image_for_Manual/KinectComp.png" width="40%"> 
@@ -133,7 +133,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 <br>
 
  - URG RTC  
-本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．障害物と人の検知に使用する．Xtionの方で何かのエラーで人を見失った際にはURGからの人のデータで追従を行う．  
+本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．ロボット周囲の障害物と人の検知に使用する．Xtionの方で何かのエラーで人を見失った際にはURGからの人のデータで追従を行う．  
 
 <div align="left">
 <img src="./Image_for_Manual/URGComp.png" width="25%"> 
