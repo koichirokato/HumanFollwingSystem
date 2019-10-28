@@ -77,7 +77,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: left;">
 図2-1 RTC図
 </div>
-
+<br>
 
 <div style="text-align: left;">
 表2-1 各RTC概要
@@ -104,6 +104,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: left;">
 図2-2 Kinect RTC
 </div>
+<br>
 
  - URG RTC  
 本RTCは，先述したURG-04LXのセンサデータを取得し，出力するRTCである．障害物と人の検知に使用する．Xtionの方で何かのエラーで人を見失った際にはURGからの人のデータで追従を行う．  
@@ -115,6 +116,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: left;">
 図2-3 URG RTC
 </div>
+<br>
 
  - Concierge_Type3_verOLD RTC  
 本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリを出力する．  
@@ -126,6 +128,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: left;">
 図2-4 Concierge_Type3_verOLD RTC
 </div>
+<br>
 
  - object_tracking_concierge RTC  
 本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．  
@@ -137,7 +140,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: left;">
 図2-5 object_tracking_concierge RTC
 </div>
-
+<br>
 
  - TrajectoryPrediction RTC  
 本RTCは今回開発した人の移動軌跡を予測するRTCである． object_tracking_concierge RTCからワールド座標系の人の位置座標を受け取り，それをもとに軌跡の予測をする．詳細は次章にて解説する．  
@@ -149,6 +152,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇを用いた．OpenNIを用いて�
 <div style="text-align: left;">
 図2-6 TrajectoryPrediction RTC
 </div>
+<br>
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
 本RTCは今回新規に開発したRTCである．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
@@ -191,4 +195,3 @@ TrajectoryPrediction RTCはPython言語のため .pyファイルから実行で�
 ポートを図2-1のように接続し，各コンポーネントをアクティベートする．PrimeSense viewerとURGの表示を図なんとかのようにし，右手を上げる．右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミングで追従を開始する．追従を終わらせたい場合は再度右手を上げる．  
 
 今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する．  
-
