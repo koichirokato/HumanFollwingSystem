@@ -70,7 +70,7 @@
 
 
 ### 1.3.3 Depthセンサ  
-DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観，表1-2に主な仕様を示す(参考文献：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
+DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観，表1-2に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
@@ -242,3 +242,4 @@ TrajectoryPrediction RTCはPython言語のため .pyファイルから実行で�
 
 # 5. 参考文献  
  - URG：https://www.hokuyo-aut.co.jp/search/single.php?serial=17
+ - Xtion：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/
