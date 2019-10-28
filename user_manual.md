@@ -303,13 +303,14 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 
 <div style="page-break-before:always"></div>
 
-# 5. 参考文献  
-[^1]: URG：https://www.hokuyo-aut.co.jp/search/single.php?serial=17  
+# 5. 参考文献
 
-[^2]: Xtion：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/  
+ [^1]:  URG：https://www.hokuyo-aut.co.jp/search/single.php?serial=17  
 
-[^3]: 東京女子大学加藤研究室 (仮)
+ [^2]:  Xtion：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/  
 
-[^4]: Social-LSTM:
+ [^3]:  東京女子大学加藤研究室 (仮)
+
+ [^4]:  Social-LSTM:
 http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html  
 
