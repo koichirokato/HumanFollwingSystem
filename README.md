@@ -21,7 +21,7 @@ https://github.com/koichirokato/HumanFollwingSystem/blob/master/user_manual.md
 
 ****
 連絡先：
-芝浦工業大学 機械機能工学科 知能機械システム研究室
-〒135-8548 東京都江東区豊洲3-7-5
-加藤　宏一朗 Koichiro Kato
-E-mail : ab16035@shibaura-it.ac.jp
+芝浦工業大学 機械機能工学科 知能機械システム研究室  
+〒135-8548 東京都江東区豊洲3-7-5  
+加藤　宏一朗 Koichiro Kato  
+E-mail : ab16035@shibaura-it.ac.jp  

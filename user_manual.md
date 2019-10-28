@@ -27,6 +27,10 @@
     - [4.7 追従の開始](#47-%e8%bf%bd%e5%be%93%e3%81%ae%e9%96%8b%e5%a7%8b)
 - [5. 参考文献](#5-%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae)
 
+
+<div style="page-break-before:always"></div>
+
+
 # 1. 追従中の人の軌跡を予測するRTC概要 
 ## 1.1 はじめに 
 　近年，サービスロボットの市場が急激に拡大すると予測されている．人と共存するサービスロボットは，高齢者の介護や商業施設での道案内，外国人との対話など，直接人と関わる場合が多く，これらの場合では，できるだけ人の近くにロボットがいることが好ましい．そのためにロボットには人物追従の機能は必要不可欠である．人とロボットがやりとりを行う際にロボットは人の動きを見て動く必要があり，ロボットが決まった経路を移動するよりも，ロボットが自由に動く方が適しているからである．本研究室では，RTミドルウェアを用いて追従ロボットの研究が行われてきた．追従ロボットに必要不可欠な機能として，特定の人物（ターゲット）を追従すること，ターゲットを見失った際に正確に人物を再検出するロバスト性を持つこと，そのターゲットを再追従することが挙げられる．そこで，追従精度の向上を目的に予め機械学習で学習した予測器を用いて，追従中にリアルタイムでターゲットの軌跡を予測するRTCを開発した．
@@ -54,7 +58,7 @@
 </div>
 
 ### 1.3.2 測域センサ  
-測域センサは北陽電機株式会社のURG-04LX-UG01[1]を用いた．図1-2に外観，表1-1に主な仕様を示す．  
+測域センサは北陽電機株式会社のURG-04LX-UG01[^1]を用いた．図1-2に外観，表1-1に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/URG.png" width="40%">
@@ -63,7 +67,7 @@
 <div style="text-align: left;">
 図1-2 測域センサ
 </div>
-
+<br>
 表 1-1 URG-04LX-UG01の主な仕様
 
 
@@ -78,7 +82,7 @@
 
 
 ### 1.3.3 Depthセンサ  
-DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観，表1-2に主な仕様を示す．  
+DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用いて人の骨格情報を取得する．図3に外観，表1-2に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
@@ -88,7 +92,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 図1-3 Depthセンサ
 </div>
 
-
+<br>
 表 1-2 Xtion PRO LIVE の主な使用
 
 |項目|仕様|
@@ -99,6 +103,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 |センサ有効距離|0.8m-3.5m|
 
 
+<div style="page-break-before:always"></div>
 
 
 # 2. 本システムの各RTCの概要と仕様  
@@ -188,8 +193,10 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 </div>
 <br>
 
+<div style="page-break-before:always"></div>
+
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
-本RTCは今回新規に開発したRTCである．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
+本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[^3]がsocial-lstm[^4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットが～のため，ワールド座標系の人の座標をもとに予測をする．  
 
 現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`directory/nantoka.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `dire/kekka.txt`に予測した10フレーム分のデータを出力する．その`kekka`ファイルからデータを出力する．  
 
@@ -214,6 +221,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 ## 3.2 予測結果  
 今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は5フレーム分を受け取り，その座標をロボットに追従させる．安全面を考慮して，予測結果が人を見失った座標から大きく離れていた場合はその予測を適応しない．  
 
+<div style="page-break-before:always"></div>
 
 # 4. 本システムの使用方法
 ## 4.1 ハードウェアの準備
@@ -241,6 +249,7 @@ object_tracking_concierge RTCはC++言語で書かれているため，ビルド
 
 
 ## 4.4 システムの起動
+- PC①，PC②共通
 Start Naming Service とeclipseを起動する．ワークスペースの選択ではRTCのフォルダがあるワークスペースを選択する．また，2台のPCが同ネットワークに接続されている必要がある．  
 
 
@@ -256,15 +265,16 @@ PC①で動作させるRTCはC++で書かれているため，exeファイルか
 <br>
 
  - PC②
-TrajectoryPrediction RTCはPython言語で書かれているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図なんとかのようにファイルを選択して実行する．  
-`Python TrajectoryPrediction.py`  
+TrajectoryPrediction RTCはPython言語で書かれているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図なんとかのようにファイルを選択して実行する．<br>  
+    `Python TrajectoryPrediction.py`  
+<br>
 
 ## 4.5 RTCの接続
 ### 4.5.1 PC間の接続
 PC①またはPC②のEclipseでネームサーバーの追加からもう一方のPCのIPアドレスを入力して接続する．
 
 ### 4.5.2 各RTCの接続
-4.5.1でネームサーバーを追加したPCで，4.4で起動したRTCをSystem Diagram上にドラッグ&ドロップし，ポートを図2-1のように接続する．  
+4.5.1でネームサーバーを追加したPCで，4.4で起動したRTCをSystem Diagram上にドラッグ&ドロップし，各RTCのポートを図2-1のように接続する．  
 
 
 ## 4.6 システムの起動  
@@ -280,7 +290,7 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 <br>
 
 ### 4.7 追従の開始
-右手より右ひじが上かつ，右ひじより右肩が上のポーズを認識したタイミング(図4-2)で追従を開始する．追従を終わらせたい場合は再度右手を上げる．今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する． 
+右手より右ひじが上かつ，右ひじより右肩が上のポーズ(図4-2)を認識したタイミングで追従を開始する．追従を終わらせたい場合は再度右手を上げる．今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する． 
 
 <div align="left">
 <img src="./Image_for_Manual/primesense.png" width="50%"> 
@@ -291,7 +301,11 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 </div>
 <br> 
 
+<div style="page-break-before:always"></div>
 
 # 5. 参考文献  
- - URG：https://www.hokuyo-aut.co.jp/search/single.php?serial=17
- - Xtion：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/
+[^1]: URG：https://www.hokuyo-aut.co.jp/search/single.php?serial=17  
+[^2]: Xtion：https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/  
+[^3]: 東京女子大学加藤研究室 (仮)
+[^4]: Social-LSTM:
+http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html  
