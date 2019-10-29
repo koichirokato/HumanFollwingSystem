@@ -1,8 +1,8 @@
 <h3>RTミドルウェアコンテスト</h3>
 <h1>「追従中の人の軌跡を予測するRTC」ユーザーマニュアル</h1>
 
-芝浦工業大学 機械機能工学科 知能機械システム研究室 加藤 宏一朗
-東京女子大学 数理科学科 加藤研究室 赤羽根 里奈
+芝浦工業大学 機械機能工学科 知能機械システム研究室 加藤 宏一朗  
+東京女子大学 数理科学科 加藤研究室 赤羽根 里奈  
 
 **目次**
 - [1. 追従中の人の軌跡を予測するRTC概要](#1-%e8%bf%bd%e5%be%93%e4%b8%ad%e3%81%ae%e4%ba%ba%e3%81%ae%e8%bb%8c%e8%b7%a1%e3%82%92%e4%ba%88%e6%b8%ac%e3%81%99%e3%82%8brtc%e6%a6%82%e8%a6%81)
@@ -39,21 +39,21 @@
 ## 1.2 開発・動作環境  
 - PC ①
   - OS : Windows7 Enterprise 64bit
-  - プロセッサ : Intel® Core™i5-3320M CPU@2.6GHz
+  - プロセッサ : Intel® Core™i5-3320M CPU＠2.6GHz
   - 実装メモリ : 4.00GB
   - OpenRTM-aist1.2.0 32bit
   - CMake 3.5.2
   - OpenNI 2
 - PC ②
   - OS : Windows 10 Home 64bit
-  - プロセッサ : Intel® Core™i5-8250U CPU@1.6GHz
+  - プロセッサ : Intel® Core™i5-8250U CPU＠1.6GHz
   - 実装メモリ : 8.00GB
   - OpenRTM-aist1.2.0 64bit
   - Python 3.7.2 64bit
 
 ## 1.3 使用機器  
 ### 1.3.1 移動台車  
-本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサ，腹部には測域センサが搭載されている． 
+本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサ，腹部には測域センサが搭載されている．  
 <div align="left"> 
 <img src="./Image_for_Manual/concierge.png" width="60%">
 </div>
@@ -84,7 +84,7 @@
 |測距分解能|約1[mm]|
 |角度分解能|ステップ角：約0.36[°]|
 |走査時間|100[ms/scan]|
-
+<br>
 
 ### 1.3.3 Depthセンサ  
 DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用いて人の骨格情報を取得する．図1-3に外観，表1-2に主な仕様を示す．  
@@ -245,11 +245,11 @@ PC①にURG，Xtion，移動台車を接続する．
  - PC①
    - OS : Windows 7
    - OpenRTM 1.2.0
-   - **OpenNI 2**
+   - OpenNI 2
  - PC②
    - OS : Windows 10
-   - **OpenRTM 1.2.0 64bit版**
-   - **Python3 64bit版が使用**
+   - OpenRTM 1.2.0 64bit
+   - Python3 64bit
 
 また，PC②のTrjectoryPrediction RTCを動作させるにはpip等で以下のモジュールをインストールする必要がある．ただし留意点として，pytorchはwindows上のPython2系およびPython 32bit版には対応していない．  
 - numpy  
@@ -270,6 +270,8 @@ Start Naming Service とeclipseを起動する．ワークスペースの選択�
  - PC①  
 PC①で動作させるRTCはC++で実装されているため，exeファイルから起動させる．  
 
+表4-1 PC①で起動させるRTC一覧  
+
 | RTC名                       | 起動ファイル |
 |:---:                        |:---:|
 |  Kinect                     | KinectComp.exe|
@@ -279,7 +281,7 @@ PC①で動作させるRTCはC++で実装されているため，exeファイル
 <br>
 
  - PC②  
-TrajectoryPrediction RTCはPython言語で書かれているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．<br>  
+TrajectoryPrediction RTCはPython言語で実装されているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．<br>  
     `Python TrajectoryPrediction.py`  
 <br>
 
