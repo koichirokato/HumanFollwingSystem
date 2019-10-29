@@ -1,7 +1,8 @@
 <h3>RTミドルウェアコンテスト</h3>
 <h1>「追従中の人の軌跡を予測するRTC」ユーザーマニュアル</h1>
 
-芝浦工業大学 知能機械システム研究室 加藤宏一朗
+芝浦工業大学 機械機能工学科 知能機械システム研究室 加藤 宏一朗
+東京女子大学 数理科学科 加藤研究室 赤羽根 里奈
 
 **目次**
 - [1. 追従中の人の軌跡を予測するRTC概要](#1-%e8%bf%bd%e5%be%93%e4%b8%ad%e3%81%ae%e4%ba%ba%e3%81%ae%e8%bb%8c%e8%b7%a1%e3%82%92%e4%ba%88%e6%b8%ac%e3%81%99%e3%82%8brtc%e6%a6%82%e8%a6%81)
@@ -37,14 +38,18 @@
 
 ## 1.2 開発・動作環境  
 - PC ①
-  - OS : Windows7
-  - OpenRTM-aist1.2.0(32bit版)
-  - CMake
-  - OpenNI
+  - OS : Windows7 Enterprise 64bit
+  - プロセッサ : Intel® Core™i5-3320M CPU@2.6GHz
+  - 実装メモリ : 4.00GB
+  - OpenRTM-aist1.2.0 32bit
+  - CMake 3.5.2
+  - OpenNI 2
 - PC ②
-  - OS : Windows 10
-  - OpenRTM-aist1.2.0(64bit版)
-  - Python 3.7.2 (64bit版)
+  - OS : Windows 10 Home 64bit
+  - プロセッサ : Intel® Core™i5-8250U CPU@1.6GHz
+  - 実装メモリ : 8.00GB
+  - OpenRTM-aist1.2.0 64bit
+  - Python 3.7.2 64bit
 
 ## 1.3 使用機器  
 ### 1.3.1 移動台車  
@@ -58,7 +63,7 @@
 </div>
 
 ### 1.3.2 測域センサ  
-測域センサは北陽電機株式会社のURG-04LX-UG01[^1]を用いた．図1-2に外観，表1-1に主な仕様を示す．  
+測域センサは北陽電機株式会社のURG-04LX-UG01[1]を用いた．図1-2に外観，表1-1に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/URG.png" width="40%">
@@ -82,7 +87,7 @@
 
 
 ### 1.3.3 Depthセンサ  
-DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用いて人の骨格情報を取得する．図1-3に外観，表1-2に主な仕様を示す．  
+DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用いて人の骨格情報を取得する．図1-3に外観，表1-2に主な仕様を示す．  
 
 <div align="left">
 <img src="./Image_for_Manual/Xtion.png" width="40%">  
@@ -158,7 +163,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 <br>
 
  - Concierge_Type3_verOLD RTC  
-本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリを出力する．  
+本RTCは，object_tracking_concoergeから速度指令を受け取り，移動台車を動かすRTCである．また，Outportからオドメトリ[m]を出力する．  
 
 <div align="left">
 <img src="./Image_for_Manual/Concierge_Type3_VerOLDComp.png" width="40%"> 
@@ -170,7 +175,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 <br>
 
  - object_tracking_concierge RTC  
-本RTCは，kinect RTC から人の位置情報，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリを受け取り，ワールド座標系の人の座標を計算し，軌跡予測RTCに座標を出力する．  
+本RTCは，kinect RTC から人の位置情報[mm]，URG RTC からRangeデータを受け取り，それらのデータを統合し，人との距離が一定になるように移動台車に速度指令を送る．また，移動台車からオドメトリ[m]を受け取り，ワールド座標系の人の座標[m]を計算し，軌跡予測RTCにその座標を出力する．  
 
 <div align="left">
 <img src="./Image_for_Manual/object_tracking_conciergeComp.png" width="50%"> 
@@ -196,9 +201,9 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 <div style="page-break-before:always"></div>
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
-本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[^3]がSocial-LSTM[^4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．今回は学習に用いたデータセットがETH Dataset[^5]のため，ワールド座標系の人の座標をもとに予測をする．  
+本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[3]がSocial-LSTM[4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．図3-1と表3-1に外観と詳細を示す．今回は学習に用いたデータセットがETH Dataset[5]のため，ワールド座標系の人の座標をもとに予測をする．  
 
-現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`./data/test/crowds/input.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `./result/SOCIALLSTM/LSTM/test/crowds/output.txt`に予測した10フレーム分のデータを出力する．    
+現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`TrajectoryPrediction/data/test/crowds/input.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `TrajectoryPrediction/result/SOCIALLSTM/LSTM/test/crowds/output.txt`に予測した10フレーム分のデータを出力する．    
 
 <div align="left">
 <img src="./Image_for_Manual/TrajectoryPredictionComp.png" width="100%"> 
@@ -216,7 +221,8 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[^2]を用いた．OpenNIを用い�
 |In/Out| Port名 | データ型 | 機能 | データの例 |
 |:---: |:---: |:---:    |:---:|  :---:|
 |In    |HumanPoint|TimedDoubleSeq|人の座標を受け取る|HumanPoint.data.[0] = 人のx座標  HumanPoint.data.[1] = 人のy座標|
-|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[i] = 人のx座標(i=1 - 10の奇数) <br> PredictionHumanPoint.data.[i] = 人のy座標(i=1 - 10の偶数)|  
+|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[2n-1] = 人のx座標 <br> PredictionHumanPoint.data.[2n] = 人のy座標 <br> (1≦n≦5)|  
+
 
 ## 3.2 予測結果  
 今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は5フレーム分を受け取り，その座標をロボットに追従させる．安全面を考慮して，予測結果が人を見失った座標から大きく離れていた場合はその予測を適応しない．  
@@ -323,15 +329,29 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 
 # 5. 参考文献
 
- [^1]: [URG](https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
+ [1] : [URG](https://www.hokuyo-aut.co.jp/search/single.php?serial=17)  
 
- [^2]: [Xtion](https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
+ [2] : [Xtion](https://www.asus.com/jp/3D-Sensor/Xtion_PRO_LIVE/)  
 
- [^3]: 東京女子大学加藤研究室 (仮)  
+ [3] : [東京女子大学 加藤研究室](https://scrapbox.io/katolab/)  
 
- [^4]: [Social-LSTM](http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html)  
+ [4] : [Social-LSTM](http://openaccess.thecvf.com/content_cvpr_2016/html/Alahi_Social_LSTM_Human_CVPR_2016_paper.html)  
 
- [^5]: Pellegrini, S., Ess, A., Schindler, K. and van Gool, L.:You'll
+ [5] : Pellegrini, S., Ess, A., Schindler, K. and van Gool, L.:You'll
 Never Walk Alone: Modeling Social Behavior for Multi-target
 Tracking, Proc. IEEE International Conference on Computer
-Vision (ICCV 2009), pp. 261-268(2009).
+Vision (ICCV 2009), pp. 261-268(2009).  
+
+<div style="page-break-before:always"></div>
+
+***
+連絡先：
+芝浦工業大学 機械機能工学科 知能機械システム研究室  
+〒135-8548 東京都江東区豊洲3-7-5  
+加藤　宏一朗 Koichiro Kato  
+E-mail : ab16035@shibaura-it.ac.jp  
+
+東京女子大学 数理科学科 加藤研究室
+〒167-8585 東京都杉並区善福寺2-6-1
+赤羽根 里奈 Rina Akabane
+E-mail : d19m201@cis.twcu.ac.jp

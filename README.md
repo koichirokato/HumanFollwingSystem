@@ -25,3 +25,8 @@ https://github.com/koichirokato/HumanFollwingSystem/blob/master/user_manual.md
 〒135-8548 東京都江東区豊洲3-7-5  
 加藤　宏一朗 Koichiro Kato  
 E-mail : ab16035@shibaura-it.ac.jp  
+
+東京女子大学 数理科学科 加藤研究室
+〒167-8585 東京都杉並区善福寺2-6-1
+赤羽根 里奈 Rina Akabane
+E-mail : d19m201@cis.twcu.ac.jp
