@@ -308,7 +308,7 @@ TrajectoryPrediction RTCはPython言語で実装されているため，コマ�
 <br>
 
 <div align="left">
-<img src="./Image_for_Manual/TrajectoryPrediction_py.png" width="100%"> 
+<img src="./Image_for_Manual/TrajectoryPrediction_py.png" width="60%"> 
 </div>
 
 <div style="text-align: left;">
