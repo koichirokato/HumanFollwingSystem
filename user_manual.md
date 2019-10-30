@@ -229,7 +229,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 イメージは図3-2のようになっている．この処理が人の座標を更新しながら繰り返されている．また，実験結果は図3-3のようになった．青色のプロットが人の軌跡でオレンジの点が予測された点である．これは11フレーム目のみの値である．  
 
 <div align="left">
-<img src="./Image_for_Manual/predictionimage.png" width="80%"> 
+<img src="./Image_for_Manual/predictionimage.png" width="60%"> 
 </div>
 
 <div style="text-align: left;">
@@ -238,7 +238,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 <br>
 
 <div align="left">
-<img src="./Image_for_Manual/predictionresult.png" width="80%"> 
+<img src="./Image_for_Manual/predictionresult.png" width="50%"> 
 </div>
 <div style="text-align: left;">
 図3-3 軌跡予測結果
@@ -256,11 +256,11 @@ PC①にURG，Xtion，移動台車を接続する．
 ## 4.2 動作環境
 以下に本稿で使用するシステムの動作環境を示す．
  - PC①
-   - OS : Windows 7
-   - OpenRTM 1.2.0
+   - OS : Windows 7 32bit
+   - OpenRTM 1.2.0 32bit
    - OpenNI 2
  - PC②
-   - OS : Windows 10
+   - OS : Windows 10 64bit
    - OpenRTM 1.2.0 64bit
    - Python3 64bit
 
