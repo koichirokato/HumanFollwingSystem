@@ -203,7 +203,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
 本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[3]がSocial-LSTM[4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．図3-1と表3-1に外観と詳細を示す．今回は学習に用いたデータセットがETH Dataset[5]のため，ワールド座標系の人の座標をもとに予測をする．  
 
-現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`TrajectoryPrediction/data/test/crowds/input.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `TrajectoryPrediction/result/SOCIALLSTM/LSTM/test/crowds/output.txt`に予測した10フレーム分のデータを出力する．    
+現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`TrajectoryPrediction/data/test/crowds/input.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `TrajectoryPrediction/result/SOCIALLSTM/LSTM/test/crowds/file01.txt`に予測した10フレーム分のデータを出力する．    
 
 <div align="left">
 <img src="./Image_for_Manual/TrajectoryPredictionComp.png" width="100%"> 
@@ -226,11 +226,24 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 
 ## 3.2 予測結果  
 今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は5フレーム分を受け取り，その座標をロボットに追従させる．安全面を考慮して，予測結果が人を見失った座標から大きく離れていた場合はその予測を適応しない．  
+イメージは図3-2のようになっている．この処理が人の座標を更新しながら繰り返されている．また，実験結果は図3-3のようになった．青色のプロットが人の軌跡でオレンジの点が予測された点である．これは11フレーム目のみの値である．  
 
-```
-***ここにグラフか何かをいれる***
-```
+<div align="left">
+<img src="./Image_for_Manual/predictionimage.png" width="80%"> 
+</div>
 
+<div style="text-align: left;">
+図3-2 軌跡予測のイメージ
+</div>
+<br>
+
+<div align="left">
+<img src="./Image_for_Manual/predictionresult.png" width="80%"> 
+</div>
+<div style="text-align: left;">
+図3-3 軌跡予測結果
+</div>
+<br>
 
 <div style="page-break-before:always"></div>
 
