@@ -52,17 +52,20 @@
   - OpenRTM-aist1.2.0 64bit
   - Python 3.7.2 64bit
 - ライセンスはMITライセンスとする．研究用途かつ利用者の責任下でご使用ください．
+ 
+<div style="page-break-before:always"></div>
 
 ## 1.3 使用機器  
 ### 1.3.1 移動台車  
 本システムでは図1に示す移動ロボットを用いる．移動台車はVECTOR株式会社のコンシェルジュ，頭部にDepthセンサ，腹部には測域センサが搭載されている．  
 <div align="left"> 
-<img src="./Image_for_Manual/concierge.png" width="60%">
+<img src="./Image_for_Manual/concierge.png" width="70%">
 </div>
 
 <div style="text-align: left;">
 図1-1 移動台車
 </div>
+<br>
 
 ### 1.3.2 測域センサ  
 測域センサは北陽電機株式会社のURG-04LX-UG01[1]を用いた．図1-2に外観，表1-1に主な仕様を示す．  
@@ -74,6 +77,7 @@
 <div style="text-align: left;">
 図1-2 測域センサ
 </div>
+<br>
 <br>
 表 1-1 URG-04LX-UG01の主な仕様
 
@@ -253,7 +257,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 ## 4.1 ハードウェアの準備
 本マニュアルでは，本研究室で使用しているロボットの既存の環境を流用するために，開発したRTCの動作環境と異なる環境のPCを使用した．そのためにPCを2台使用している．  
 移動ロボット，センサーに接続するPCと開発したRTCを動かすPCとなっている．前者をPC①，後者をPC②とする．  
-PC①にURG，Xtion，移動台車を接続する．  
+
 
 ## 4.2 動作環境
 以下に本稿で使用するシステムの動作環境を示す．
@@ -277,12 +281,15 @@ GithubからPC①にobject_tracking_concierge，PC②にTrajectoryPredictionを�
 object_tracking_concierge RTCはC++言語で実装されているため，ビルドを行う必要がある．
 
 
+<div style="page-break-before:always"></div>
+
 ## 4.4 システムの起動
 - PC①，PC②共通  
 Start Naming Service とeclipseを起動する．ワークスペースの選択ではRTCのフォルダがあるワークスペースを選択する．また，2台のPCが同ネットワークに接続されている必要がある．  
-
+<br>
 
  - PC①  
+PC①にURG，Xtion，移動台車を接続する．  
 PC①で動作させるRTCはC++で実装されているため，exeファイルから起動させる．  
 
 表4-1 PC①で起動させるRTC一覧  
