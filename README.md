@@ -21,6 +21,9 @@ https://github.com/koichirokato/HumanFollwingSystem/blob/master/HumanFollowingSy
 詳細なマニュアルは以下にあります．  
 https://github.com/koichirokato/HumanFollwingSystem/blob/master/user_manual.md  
 
+RTCのソースコードは以下にあります．
+https://github.com/koichirokato/HumanFollwingSystem/tree/master/workspace
+
 
 ****
 連絡先：
