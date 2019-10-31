@@ -279,8 +279,14 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 
 ## 4.3 RTCのダウンロード
 GithubからPC①にobject_tracking_concierge，PC②にTrajectoryPredictionをダウンロードする．  
-object_tracking_concierge RTCはC++言語で実装されているため，ビルドを行う必要がある．
+object_tracking_concierge RTCはC++言語で実装されているため，ビルドを行う必要がある．また，ログファイルをC++から書き込むため，図4-1のようにビルド先のobject_tracking_conciergeComp.exe等 と同ディレクトリに "log"フォルダを作る必要がある．  
 
+<div align="left">
+<img src="./Image_for_Manual/log.png" width="70%"> 
+</div>
+<div style="text-align: left;">
+図4-1 Logフォルダ
+</div>
 
 <div style="page-break-before:always"></div>
 
@@ -313,7 +319,7 @@ TrajectoryPrediction RTCはPython言語で実装されているため，コマ�
 </div>
 
 <div style="text-align: left;">
-図4-1 TrajectoryPrediction.py
+図4-2 TrajectoryPrediction.py
 </div>
 <br>
 
@@ -334,9 +340,11 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 </div>
 
 <div style="text-align: left;">
-図4-2 表示画面
+図4-3 表示画面
 </div>
 <br>
+
+<div style="page-break-before:always"></div>
 
 ### 4.7 追従の開始
 右手より右ひじが上かつ，右ひじより右肩が上のポーズ(図4-2)を認識したタイミングで追従を開始する．追従を終わらせたい場合は再度右手を上げる．今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する． 
@@ -346,7 +354,7 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 </div>
 
 <div style="text-align: left;">
-図4-3 追従開始/終了のポーズ
+図4-4 追従開始/終了のポーズ
 </div>
 <br> 
 
@@ -366,8 +374,6 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 Never Walk Alone: Modeling Social Behavior for Multi-target
 Tracking, Proc. IEEE International Conference on Computer
 Vision (ICCV 2009), pp. 261-268(2009).  
-
-<div style="page-break-before:always"></div>
 
 ***
 連絡先：
