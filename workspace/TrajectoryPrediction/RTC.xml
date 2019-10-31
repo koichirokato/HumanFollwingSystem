@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<rts:RtsProfile rts:updateDate="2019-10-31T17:00:17+09:00" rts:creationDate="2019-10-31T16:56:18+09:00" rts:version="0.2" rts:id="RTSystem:kato:rtc:1" xmlns:rtsExt="http://www.openrtp.org/namespaces/rts_ext" xmlns:rts="http://www.openrtp.org/namespaces/rts" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="true" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="TrajectoryPrediction0" rts:pathUri="localhost/LAPTOP-83EDG5N9.host_cxt/TrajectoryPrediction0.rtc" rts:id="RTC:kato:Category:TrajectoryPrediction:1.0.0">
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="TrajectoryPrediction0.PredictionHumanPoint">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedDoubleSeq:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush, new, periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="flush, new, periodic" rtsExt:name="dataport.io_mode"/>
+            <rtsExt:Properties rtsExt:value="push, pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr, direct, shared_memory" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="TrajectoryPrediction0.HumanPoint">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedDoubleSeq:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push, pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr, direct, shared_memory" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:ConfigurationSets rts:id="default"/>
+        <rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:rate="1000.0" rts:kind="PERIODIC" rts:id="0">
+            <rtsExt:Properties rtsExt:value="YES" rtsExt:name="sync_transition"/>
+            <rtsExt:Properties rtsExt:value="0.5" rtsExt:name="transition_timeout"/>
+            <rtsExt:Properties rtsExt:value="PeriodicExecutionContext" rtsExt:name="type"/>
+            <rtsExt:Properties rtsExt:value="1000.0" rtsExt:name="rate"/>
+        </rts:ExecutionContexts>
+        <rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:y="143" rtsExt:x="517"/>
+        <rtsExt:Properties rtsExt:value="TrajectoryPrediction" rtsExt:name="implementation_id"/>
+        <rtsExt:Properties rtsExt:value="TrajectoryPrediction" rtsExt:name="type_name"/>
+        <rtsExt:Properties rtsExt:value="ModuleDescription" rtsExt:name="description"/>
+        <rtsExt:Properties rtsExt:value="1.0.0" rtsExt:name="version"/>
+        <rtsExt:Properties rtsExt:value="kato" rtsExt:name="vendor"/>
+        <rtsExt:Properties rtsExt:value="Category" rtsExt:name="category"/>
+        <rtsExt:Properties rtsExt:value="STATIC" rtsExt:name="activity_type"/>
+        <rtsExt:Properties rtsExt:value="1" rtsExt:name="max_instance"/>
+        <rtsExt:Properties rtsExt:value="Python" rtsExt:name="language"/>
+        <rtsExt:Properties rtsExt:value="SCRIPT" rtsExt:name="lang_type"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="conf"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.dataport"/>
+        <rtsExt:Properties rtsExt:value="TrajectoryPrediction0" rtsExt:name="instance_name"/>
+        <rtsExt:Properties rtsExt:value="1.2.0" rtsExt:name="config.version"/>
+        <rtsExt:Properties rtsExt:value="OpenRTM-aist-1.2.0" rtsExt:name="openrtm.name"/>
+        <rtsExt:Properties rtsExt:value="1.2.0" rtsExt:name="openrtm.version"/>
+        <rtsExt:Properties rtsExt:value="Windows" rtsExt:name="os.name"/>
+        <rtsExt:Properties rtsExt:value="10" rtsExt:name="os.release"/>
+        <rtsExt:Properties rtsExt:value="10.0.18362" rtsExt:name="os.version"/>
+        <rtsExt:Properties rtsExt:value="AMD64" rtsExt:name="os.arch"/>
+        <rtsExt:Properties rtsExt:value="LAPTOP-83EDG5N9" rtsExt:name="os.hostname"/>
+        <rtsExt:Properties rtsExt:value="172.30.130.250:64848" rtsExt:name="corba.endpoints"/>
+        <rtsExt:Properties rtsExt:value="172.30.130.250:64848" rtsExt:name="corba.endpoints_ipv4"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="corba.endpoints_ipv6"/>
+        <rtsExt:Properties rtsExt:value="omniORB" rtsExt:name="corba.id"/>
+        <rtsExt:Properties rtsExt:value="PeriodicExecutionContext" rtsExt:name="exec_cxt.periodic.type"/>
+        <rtsExt:Properties rtsExt:value="1000.0" rtsExt:name="exec_cxt.periodic.rate"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="exec_cxt.sync_transition"/>
+        <rtsExt:Properties rtsExt:value="0.5" rtsExt:name="exec_cxt.transition_timeout"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="logger.enable"/>
+        <rtsExt:Properties rtsExt:value="INFO" rtsExt:name="logger.log_level"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="naming.enable"/>
+        <rtsExt:Properties rtsExt:value="corba" rtsExt:name="naming.type"/>
+        <rtsExt:Properties rtsExt:value="%h.host_cxt/%n.rtc" rtsExt:name="naming.formats"/>
+        <rtsExt:Properties rtsExt:value="LAPTOP-83EDG5N9.host_cxt/TrajectoryPrediction0.rtc" rtsExt:name="naming.names"/>
+        <rtsExt:Properties rtsExt:value="IDL:OpenRTM/ComponentObserver:1.0" rtsExt:name="sdo.service.consumer.available_services"/>
+        <rtsExt:Properties rtsExt:value="ALL" rtsExt:name="sdo.service.consumer.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="ALL" rtsExt:name="sdo.service.provider.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.available_services"/>
+        <rtsExt:Properties rtsExt:value="manager" rtsExt:name="manager.instance_name"/>
+        <rtsExt:Properties rtsExt:value="TrajectoryPrediction.conf" rtsExt:name="config_file"/>
+        <rtsExt:Properties rtsExt:value="IOR:000000000000003549444c3a6f70656e72746d2e616973742e676f2e6a702f4f70656e52544d2f44617461466c6f77436f6d706f6e656e743a312e3000000000000000010000000000000068000102000000000f3137322e33302e3133302e3235300000fd5000000000000efe4994ba5d000073b4000000000100000000000200000000000000080000000041545400000000010000001c00000000000100010000000105010001000101090000000100010109" rtsExt:name="IOR"/>
+    </rts:Components>
+    <rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="true" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="object_tacking_concierge0" rts:pathUri="172.30.129.38/ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rts:id="RTC:Kazuma_Fujimoto:Category:object_tacking_concierge:1.0.0">
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="object_tacking_concierge0.black_ship">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="object_tacking_concierge0.HumanPoint">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedDoubleSeq:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="object_tacking_concierge0.RangeData">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="object_tacking_concierge0.user_info">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedString:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="object_tacking_concierge0.RobotPose2D">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="object_tacking_concierge0.PredictionHumanPoint">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedDoubleSeq:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:ConfigurationSets rts:id="default">
+            <rts:ConfigurationData rts:data="1000" rts:name="follow_distance"/>
+            <rts:ConfigurationData rts:data="9" rts:name="va_value"/>
+            <rts:ConfigurationData rts:data="9" rts:name="vx_value"/>
+        </rts:ConfigurationSets>
+        <rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:rate="10.0" rts:kind="PERIODIC" rts:id="0"/>
+        <rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:y="368" rtsExt:x="516"/>
+        <rtsExt:Properties rtsExt:value="object_tacking_concierge" rtsExt:name="implementation_id"/>
+        <rtsExt:Properties rtsExt:value="object_tacking_concierge" rtsExt:name="type_name"/>
+        <rtsExt:Properties rtsExt:value="ModuleDescription" rtsExt:name="description"/>
+        <rtsExt:Properties rtsExt:value="1.0.0" rtsExt:name="version"/>
+        <rtsExt:Properties rtsExt:value="Kazuma_Fujimoto" rtsExt:name="vendor"/>
+        <rtsExt:Properties rtsExt:value="Category" rtsExt:name="category"/>
+        <rtsExt:Properties rtsExt:value="PERIODIC" rtsExt:name="activity_type"/>
+        <rtsExt:Properties rtsExt:value="1" rtsExt:name="max_instance"/>
+        <rtsExt:Properties rtsExt:value="C++" rtsExt:name="language"/>
+        <rtsExt:Properties rtsExt:value="compile" rtsExt:name="lang_type"/>
+        <rtsExt:Properties rtsExt:value="1000" rtsExt:name="conf.default.follow_distance"/>
+        <rtsExt:Properties rtsExt:value="9" rtsExt:name="conf.default.va_value"/>
+        <rtsExt:Properties rtsExt:value="9" rtsExt:name="conf.default.vx_value"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.available_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.available_services"/>
+        <rtsExt:Properties rtsExt:value="DataFlowComponent" rtsExt:name="kind"/>
+        <rtsExt:Properties rtsExt:value="object_tacking_concierge0" rtsExt:name="instance_name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="config.version"/>
+        <rtsExt:Properties rtsExt:value="OpenRTM-aist-1.1.0" rtsExt:name="openrtm.name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="openrtm.version"/>
+        <rtsExt:Properties rtsExt:value="Win32" rtsExt:name="os.name"/>
+        <rtsExt:Properties rtsExt:value="Windows NT 6.1" rtsExt:name="os.release"/>
+        <rtsExt:Properties rtsExt:value="Build 7601 Service Pack 1" rtsExt:name="os.version"/>
+        <rtsExt:Properties rtsExt:value="Intel Pentium Pro" rtsExt:name="os.arch"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC" rtsExt:name="os.hostname"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="corba.endpoint"/>
+        <rtsExt:Properties rtsExt:value="omniORB" rtsExt:name="corba.id"/>
+        <rtsExt:Properties rtsExt:value="PeriodicExecutionContext" rtsExt:name="exec_cxt.periodic.type"/>
+        <rtsExt:Properties rtsExt:value="10.0" rtsExt:name="exec_cxt.periodic.rate"/>
+        <rtsExt:Properties rtsExt:value="EventDrivenExecutionContext" rtsExt:name="exec_cxt.evdriven.type"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="logger.enable"/>
+        <rtsExt:Properties rtsExt:value="INFO" rtsExt:name="logger.log_level"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="naming.enable"/>
+        <rtsExt:Properties rtsExt:value="corba" rtsExt:name="naming.type"/>
+        <rtsExt:Properties rtsExt:value="%h.host_cxt/%n.rtc" rtsExt:name="naming.formats"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rtsExt:name="naming.names"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="config_file"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.RangeData"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.user_info"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.RobotPose2D"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.PredictionHumanPoint"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.black_ship"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.humanpoint"/>
+        <rtsExt:Properties rtsExt:value="IOR:000000000000003549444c3a6f70656e72746d2e616973742e676f2e6a702f4f70656e52544d2f44617461466c6f77436f6d706f6e656e743a312e3000000000000000010000000000000064000102000000000e3137322e33302e3132392e333800c31e0000000efe4c94ba5d00000d24000000000000000000000200000000000000080000000041545400000000010000001c00000000000100010000000105010001000101090000000100010109" rtsExt:name="IOR"/>
+    </rts:Components>
+    <rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="true" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="Concierge_Type3_verOLD0" rts:pathUri="172.30.129.38/ROBOlab-PC.host_cxt/Concierge_Type3_verOLD0.rtc" rts:id="RTC:Kazuma Fujimoto:Category:Concierge_Type3_verOLD:1.0.0">
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Concierge_Type3_verOLD0.RobotPose2D">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Concierge_Type3_verOLD0.Velocity2D">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Concierge_Type3_verOLD0.Pose2D">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:ConfigurationSets rts:id="default">
+            <rts:ConfigurationData rts:data="1.7" rts:name="kxy"/>
+            <rts:ConfigurationData rts:data="1.3" rts:name="ktheta"/>
+            <rts:ConfigurationData rts:data="COM4" rts:name="port"/>
+            <rts:ConfigurationData rts:data="0.0" rts:name="StartX"/>
+            <rts:ConfigurationData rts:data="0.0" rts:name="StartY"/>
+            <rts:ConfigurationData rts:data="0.0" rts:name="StartTh"/>
+            <rts:ConfigurationData rts:data="5.0" rts:name="MaxV"/>
+            <rts:ConfigurationData rts:data="5.0" rts:name="MaxW"/>
+            <rts:ConfigurationData rts:data="400" rts:name="RobotWidth"/>
+            <rts:ConfigurationData rts:data="0.3" rts:name="accel"/>
+            <rts:ConfigurationData rts:data="2.8" rts:name="kodoxy"/>
+            <rts:ConfigurationData rts:data="4.2" rts:name="kodotheta"/>
+        </rts:ConfigurationSets>
+        <rts:ConfigurationSets rts:id="__widget__">
+            <rts:ConfigurationData rts:data="text" rts:name="kxy"/>
+            <rts:ConfigurationData rts:data="text" rts:name="ktheta"/>
+            <rts:ConfigurationData rts:data="text" rts:name="port"/>
+            <rts:ConfigurationData rts:data="text" rts:name="StartX"/>
+            <rts:ConfigurationData rts:data="text" rts:name="StartY"/>
+            <rts:ConfigurationData rts:data="text" rts:name="StartTh"/>
+            <rts:ConfigurationData rts:data="text" rts:name="MaxV"/>
+            <rts:ConfigurationData rts:data="text" rts:name="MaxW"/>
+            <rts:ConfigurationData rts:data="text" rts:name="RobotWidth"/>
+            <rts:ConfigurationData rts:data="text" rts:name="accel"/>
+            <rts:ConfigurationData rts:data="text" rts:name="kodoxy"/>
+            <rts:ConfigurationData rts:data="text" rts:name="kodotheta"/>
+        </rts:ConfigurationSets>
+        <rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:rate="1000.0" rts:kind="PERIODIC" rts:id="0"/>
+        <rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:y="129" rtsExt:x="230"/>
+        <rtsExt:Properties rtsExt:value="Concierge_Type3_verOLD" rtsExt:name="implementation_id"/>
+        <rtsExt:Properties rtsExt:value="Concierge_Type3_verOLD" rtsExt:name="type_name"/>
+        <rtsExt:Properties rtsExt:value="ModuleDescription" rtsExt:name="description"/>
+        <rtsExt:Properties rtsExt:value="1.0.0" rtsExt:name="version"/>
+        <rtsExt:Properties rtsExt:value="Kazuma Fujimoto" rtsExt:name="vendor"/>
+        <rtsExt:Properties rtsExt:value="Category" rtsExt:name="category"/>
+        <rtsExt:Properties rtsExt:value="PERIODIC" rtsExt:name="activity_type"/>
+        <rtsExt:Properties rtsExt:value="1" rtsExt:name="max_instance"/>
+        <rtsExt:Properties rtsExt:value="C++" rtsExt:name="language"/>
+        <rtsExt:Properties rtsExt:value="compile" rtsExt:name="lang_type"/>
+        <rtsExt:Properties rtsExt:value="1.7" rtsExt:name="conf.default.kxy"/>
+        <rtsExt:Properties rtsExt:value="1.3" rtsExt:name="conf.default.ktheta"/>
+        <rtsExt:Properties rtsExt:value="COM4" rtsExt:name="conf.default.port"/>
+        <rtsExt:Properties rtsExt:value="0.0" rtsExt:name="conf.default.StartX"/>
+        <rtsExt:Properties rtsExt:value="0.0" rtsExt:name="conf.default.StartY"/>
+        <rtsExt:Properties rtsExt:value="0.0" rtsExt:name="conf.default.StartTh"/>
+        <rtsExt:Properties rtsExt:value="5.0" rtsExt:name="conf.default.MaxV"/>
+        <rtsExt:Properties rtsExt:value="5.0" rtsExt:name="conf.default.MaxW"/>
+        <rtsExt:Properties rtsExt:value="400" rtsExt:name="conf.default.RobotWidth"/>
+        <rtsExt:Properties rtsExt:value="0.3" rtsExt:name="conf.default.accel"/>
+        <rtsExt:Properties rtsExt:value="2.8" rtsExt:name="conf.default.kodoxy"/>
+        <rtsExt:Properties rtsExt:value="4.2" rtsExt:name="conf.default.kodotheta"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.kxy"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.ktheta"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.port"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.StartX"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.StartY"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.StartTh"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.MaxV"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.MaxW"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.RobotWidth"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.accel"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.kodoxy"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.kodotheta"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.available_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.available_services"/>
+        <rtsExt:Properties rtsExt:value="DataFlowComponent" rtsExt:name="kind"/>
+        <rtsExt:Properties rtsExt:value="Concierge_Type3_verOLD0" rtsExt:name="instance_name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="config.version"/>
+        <rtsExt:Properties rtsExt:value="OpenRTM-aist-1.1.0" rtsExt:name="openrtm.name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="openrtm.version"/>
+        <rtsExt:Properties rtsExt:value="Win32" rtsExt:name="os.name"/>
+        <rtsExt:Properties rtsExt:value="Windows NT 6.1" rtsExt:name="os.release"/>
+        <rtsExt:Properties rtsExt:value="Build 7601 Service Pack 1" rtsExt:name="os.version"/>
+        <rtsExt:Properties rtsExt:value="Intel Pentium Pro" rtsExt:name="os.arch"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC" rtsExt:name="os.hostname"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="corba.endpoint"/>
+        <rtsExt:Properties rtsExt:value="omniORB" rtsExt:name="corba.id"/>
+        <rtsExt:Properties rtsExt:value="PeriodicExecutionContext" rtsExt:name="exec_cxt.periodic.type"/>
+        <rtsExt:Properties rtsExt:value="1000.0" rtsExt:name="exec_cxt.periodic.rate"/>
+        <rtsExt:Properties rtsExt:value="EventDrivenExecutionContext" rtsExt:name="exec_cxt.evdriven.type"/>
+        <rtsExt:Properties rtsExt:value="NO" rtsExt:name="logger.enable"/>
+        <rtsExt:Properties rtsExt:value="INFO" rtsExt:name="logger.log_level"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="naming.enable"/>
+        <rtsExt:Properties rtsExt:value="corba" rtsExt:name="naming.type"/>
+        <rtsExt:Properties rtsExt:value="%h.host_cxt/%n.rtc" rtsExt:name="naming.formats"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC.host_cxt/Concierge_Type3_verOLD0.rtc" rtsExt:name="naming.names"/>
+        <rtsExt:Properties rtsExt:value="mode0" rtsExt:name="configuration.active_config"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="config_file"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.Velocity2D"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.Pose2D"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.RobotPose2D"/>
+        <rtsExt:Properties rtsExt:value="IOR:000000000000003549444c3a6f70656e72746d2e616973742e676f2e6a702f4f70656e52544d2f44617461466c6f77436f6d706f6e656e743a312e3000000000000000010000000000000064000102000000000e3137322e33302e3132392e333800c3210000000efe4c94ba5d00000eec000000000000000000000200000000000000080000000041545400000000010000001c00000000000100010000000105010001000101090000000100010109" rtsExt:name="IOR"/>
+    </rts:Components>
+    <rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="true" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="Kinect0" rts:pathUri="172.30.129.38/ROBOlab-PC.host_cxt/Kinect0.rtc" rts:id="RTC:Kazuma Fujimoto:Category:Kinect:1.0.0">
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_head">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_neck">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_left_shoulder">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_left_elbow">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_left_hand">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_right_shoulder">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_right_elbow">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_right_hand">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_torso">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_left_hip">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_left_knee">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_left_foot">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_right_hip">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_right_knee">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_right_foot">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPoint3D:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.control_voice">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedString:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.user_info">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedString:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="Kinect0.control_in">
+            <rtsExt:Properties rtsExt:value="DataInPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/TimedUShort:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="Any" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:ConfigurationSets rts:id="default"/>
+        <rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:rate="1000.0" rts:kind="PERIODIC" rts:id="0"/>
+        <rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:y="246" rtsExt:x="187"/>
+        <rtsExt:Properties rtsExt:value="Kinect" rtsExt:name="implementation_id"/>
+        <rtsExt:Properties rtsExt:value="Kinect" rtsExt:name="type_name"/>
+        <rtsExt:Properties rtsExt:value="ModuleDescription" rtsExt:name="description"/>
+        <rtsExt:Properties rtsExt:value="1.0.0" rtsExt:name="version"/>
+        <rtsExt:Properties rtsExt:value="Kazuma Fujimoto" rtsExt:name="vendor"/>
+        <rtsExt:Properties rtsExt:value="Category" rtsExt:name="category"/>
+        <rtsExt:Properties rtsExt:value="PERIODIC" rtsExt:name="activity_type"/>
+        <rtsExt:Properties rtsExt:value="1" rtsExt:name="max_instance"/>
+        <rtsExt:Properties rtsExt:value="C++" rtsExt:name="language"/>
+        <rtsExt:Properties rtsExt:value="compile" rtsExt:name="lang_type"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="conf"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.available_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.available_services"/>
+        <rtsExt:Properties rtsExt:value="DataFlowComponent" rtsExt:name="kind"/>
+        <rtsExt:Properties rtsExt:value="Kinect0" rtsExt:name="instance_name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="config.version"/>
+        <rtsExt:Properties rtsExt:value="OpenRTM-aist-1.1.0" rtsExt:name="openrtm.name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="openrtm.version"/>
+        <rtsExt:Properties rtsExt:value="Win32" rtsExt:name="os.name"/>
+        <rtsExt:Properties rtsExt:value="Windows NT 6.1" rtsExt:name="os.release"/>
+        <rtsExt:Properties rtsExt:value="Build 7601 Service Pack 1" rtsExt:name="os.version"/>
+        <rtsExt:Properties rtsExt:value="Intel Pentium Pro" rtsExt:name="os.arch"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC" rtsExt:name="os.hostname"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="corba.endpoint"/>
+        <rtsExt:Properties rtsExt:value="omniORB" rtsExt:name="corba.id"/>
+        <rtsExt:Properties rtsExt:value="PeriodicExecutionContext" rtsExt:name="exec_cxt.periodic.type"/>
+        <rtsExt:Properties rtsExt:value="1000" rtsExt:name="exec_cxt.periodic.rate"/>
+        <rtsExt:Properties rtsExt:value="EventDrivenExecutionContext" rtsExt:name="exec_cxt.evdriven.type"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="logger.enable"/>
+        <rtsExt:Properties rtsExt:value="INFO" rtsExt:name="logger.log_level"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="naming.enable"/>
+        <rtsExt:Properties rtsExt:value="corba" rtsExt:name="naming.type"/>
+        <rtsExt:Properties rtsExt:value="%h.host_cxt/%n.rtc" rtsExt:name="naming.formats"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC.host_cxt/Kinect0.rtc" rtsExt:name="naming.names"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="config_file"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.inport.control_in"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_head"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_neck"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_left_shoulder"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_left_elbow"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_left_hand"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_right_shoulder"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_right_elbow"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_right_hand"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_torso"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_left_hip"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_left_knee"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_left_foot"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_right_hip"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_right_knee"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_right_foot"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.control_voice"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.user_info"/>
+        <rtsExt:Properties rtsExt:value="IOR:000000000000003549444c3a6f70656e72746d2e616973742e676f2e6a702f4f70656e52544d2f44617461466c6f77436f6d706f6e656e743a312e3000000000000000010000000000000064000102000000000e3137322e33302e3132392e333800c3230000000efe4c94ba5d00000148000000000000000000000200000000000000080000000041545400000000010000001c00000000000100010000000105010001000101090000000100010109" rtsExt:name="IOR"/>
+    </rts:Components>
+    <rts:Components xsi:type="rtsExt:component_ext" rts:isRequired="true" rts:compositeType="None" rts:activeConfigurationSet="default" rts:instanceName="URG0" rts:pathUri="172.30.129.38/ROBOlab-PC.host_cxt/URG0.rtc" rts:id="RTC:VenderName:Category:URG:1.0.0">
+        <rts:DataPorts xsi:type="rtsExt:dataport_ext" rts:name="URG0.RangeData">
+            <rtsExt:Properties rtsExt:value="DataOutPort" rtsExt:name="port.port_type"/>
+            <rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type"/>
+            <rtsExt:Properties rtsExt:value="flush,new,periodic" rtsExt:name="dataport.subscription_type"/>
+            <rtsExt:Properties rtsExt:value="push,pull" rtsExt:name="dataport.dataflow_type"/>
+            <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        </rts:DataPorts>
+        <rts:ConfigurationSets rts:id="default">
+            <rts:ConfigurationData rts:data="6" rts:name="COM"/>
+            <rts:ConfigurationData rts:data="44" rts:name="start_step"/>
+            <rts:ConfigurationData rts:data="726" rts:name="end_step"/>
+            <rts:ConfigurationData rts:data="4000" rts:name="max_range"/>
+            <rts:ConfigurationData rts:data="1" rts:name="interval_step"/>
+        </rts:ConfigurationSets>
+        <rts:ConfigurationSets rts:id="__widget__">
+            <rts:ConfigurationData rts:data="text" rts:name="COM"/>
+            <rts:ConfigurationData rts:data="text" rts:name="start_step"/>
+            <rts:ConfigurationData rts:data="text" rts:name="end_step"/>
+            <rts:ConfigurationData rts:data="text" rts:name="max_range"/>
+            <rts:ConfigurationData rts:data="text" rts:name="interval_step"/>
+        </rts:ConfigurationSets>
+        <rts:ExecutionContexts xsi:type="rtsExt:execution_context_ext" rts:rate="10.0" rts:kind="PERIODIC" rts:id="0"/>
+        <rtsExt:Location rtsExt:direction="RIGHT" rtsExt:width="-1" rtsExt:height="-1" rtsExt:y="297" rtsExt:x="769"/>
+        <rtsExt:Properties rtsExt:value="URG" rtsExt:name="implementation_id"/>
+        <rtsExt:Properties rtsExt:value="URG" rtsExt:name="type_name"/>
+        <rtsExt:Properties rtsExt:value="ModuleDescription" rtsExt:name="description"/>
+        <rtsExt:Properties rtsExt:value="1.0.0" rtsExt:name="version"/>
+        <rtsExt:Properties rtsExt:value="VenderName" rtsExt:name="vendor"/>
+        <rtsExt:Properties rtsExt:value="Category" rtsExt:name="category"/>
+        <rtsExt:Properties rtsExt:value="PERIODIC" rtsExt:name="activity_type"/>
+        <rtsExt:Properties rtsExt:value="1" rtsExt:name="max_instance"/>
+        <rtsExt:Properties rtsExt:value="C++" rtsExt:name="language"/>
+        <rtsExt:Properties rtsExt:value="compile" rtsExt:name="lang_type"/>
+        <rtsExt:Properties rtsExt:value="6" rtsExt:name="conf.default.COM"/>
+        <rtsExt:Properties rtsExt:value="44" rtsExt:name="conf.default.start_step"/>
+        <rtsExt:Properties rtsExt:value="726" rtsExt:name="conf.default.end_step"/>
+        <rtsExt:Properties rtsExt:value="4000" rtsExt:name="conf.default.max_range"/>
+        <rtsExt:Properties rtsExt:value="1" rtsExt:name="conf.default.interval_step"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.COM"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.start_step"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.end_step"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.max_range"/>
+        <rtsExt:Properties rtsExt:value="text" rtsExt:name="conf.__widget__.interval_step"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.provider.available_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.enabled_services"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="sdo.service.consumer.available_services"/>
+        <rtsExt:Properties rtsExt:value="DataFlowComponent" rtsExt:name="kind"/>
+        <rtsExt:Properties rtsExt:value="URG0" rtsExt:name="instance_name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="config.version"/>
+        <rtsExt:Properties rtsExt:value="OpenRTM-aist-1.1.0" rtsExt:name="openrtm.name"/>
+        <rtsExt:Properties rtsExt:value="1.1.0" rtsExt:name="openrtm.version"/>
+        <rtsExt:Properties rtsExt:value="Win32" rtsExt:name="os.name"/>
+        <rtsExt:Properties rtsExt:value="Windows NT 6.1" rtsExt:name="os.release"/>
+        <rtsExt:Properties rtsExt:value="Build 7601 Service Pack 1" rtsExt:name="os.version"/>
+        <rtsExt:Properties rtsExt:value="Intel Pentium Pro" rtsExt:name="os.arch"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC" rtsExt:name="os.hostname"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="corba.endpoint"/>
+        <rtsExt:Properties rtsExt:value="omniORB" rtsExt:name="corba.id"/>
+        <rtsExt:Properties rtsExt:value="PeriodicExecutionContext" rtsExt:name="exec_cxt.periodic.type"/>
+        <rtsExt:Properties rtsExt:value="10.0" rtsExt:name="exec_cxt.periodic.rate"/>
+        <rtsExt:Properties rtsExt:value="EventDrivenExecutionContext" rtsExt:name="exec_cxt.evdriven.type"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="logger.enable"/>
+        <rtsExt:Properties rtsExt:value="INFO" rtsExt:name="logger.log_level"/>
+        <rtsExt:Properties rtsExt:value="YES" rtsExt:name="naming.enable"/>
+        <rtsExt:Properties rtsExt:value="corba" rtsExt:name="naming.type"/>
+        <rtsExt:Properties rtsExt:value="%h.host_cxt/%n.rtc" rtsExt:name="naming.formats"/>
+        <rtsExt:Properties rtsExt:value="ROBOlab-PC.host_cxt/URG0.rtc" rtsExt:name="naming.names"/>
+        <rtsExt:Properties rtsExt:value="mode1" rtsExt:name="configuration.active_config"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="config_file"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.dataport"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="port.outport.RangeData"/>
+        <rtsExt:Properties rtsExt:value="IOR:000000000000003549444c3a6f70656e72746d2e616973742e676f2e6a702f4f70656e52544d2f44617461466c6f77436f6d706f6e656e743a312e3000000000000000010000000000000064000102000000000e3137322e33302e3132392e333800c31f0000000efe4c94ba5d000005e4000000000000000000000200000000000000080000000041545400000000010000001c00000000000100010000000105010001000101090000000100010109" rtsExt:name="IOR"/>
+    </rts:Components>
+    <rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:subscriptionType="flush" rts:dataflowType="push" rts:interfaceType="corba_cdr" rts:dataType="IDL:RTC/TimedDoubleSeq:1.0" rts:name="TrajectoryPrediction0.PredictionHumanPoint_object_tacking_concierge0.PredictionHumanPoint" rts:connectorId="6d7bf39a-fbb4-11e9-a372-482ae3321c1c">
+        <rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="TrajectoryPrediction0.PredictionHumanPoint" rts:instanceName="TrajectoryPrediction0" rts:componentId="RTC:kato:Category:TrajectoryPrediction:1.0.0">
+            <rtsExt:Properties rtsExt:value="localhost/LAPTOP-83EDG5N9.host_cxt/TrajectoryPrediction0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:sourceDataPort>
+        <rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="object_tacking_concierge0.PredictionHumanPoint" rts:instanceName="object_tacking_concierge0" rts:componentId="RTC:Kazuma_Fujimoto:Category:object_tacking_concierge:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:targetDataPort>
+        <rtsExt:Properties rtsExt:value="all" rtsExt:name="dataport.publisher.push_policy"/>
+        <rtsExt:Properties rtsExt:value="IDL:RTC/TimedDoubleSeq:1.0" rtsExt:name="dataport.data_type"/>
+        <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        <rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type"/>
+        <rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type"/>
+        <rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="dataport.outport"/>
+        <rtsExt:Properties rtsExt:value="IOR:010000001a00000049444c3a4f70656e52544d2f496e506f72744364723a312e30000000010000000000000064000000010102000e0000003137322e33302e3132392e3338001ec30e000000fe4c94ba5d00000d24000000000c00000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100" rtsExt:name="dataport.corba_cdr.inport_ior"/>
+        <rtsExt:Properties rtsExt:name="dataport.corba_cdr.inport_ref"/>
+    </rts:DataPortConnectors>
+    <rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:subscriptionType="flush" rts:dataflowType="push" rts:interfaceType="corba_cdr" rts:dataType="IDL:RTC/TimedDoubleSeq:1.0" rts:name="object_tacking_concierge0.HumanPoint_TrajectoryPrediction0.HumanPoint" rts:connectorId="df0988f1-afb6-4572-972b-d0e00e6b549d">
+        <rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="object_tacking_concierge0.HumanPoint" rts:instanceName="object_tacking_concierge0" rts:componentId="RTC:Kazuma_Fujimoto:Category:object_tacking_concierge:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:sourceDataPort>
+        <rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="TrajectoryPrediction0.HumanPoint" rts:instanceName="TrajectoryPrediction0" rts:componentId="RTC:kato:Category:TrajectoryPrediction:1.0.0">
+            <rtsExt:Properties rtsExt:value="localhost/LAPTOP-83EDG5N9.host_cxt/TrajectoryPrediction0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:targetDataPort>
+        <rtsExt:Properties rtsExt:value="all" rtsExt:name="dataport.publisher.push_policy"/>
+        <rtsExt:Properties rtsExt:value="IDL:RTC/TimedDoubleSeq:1.0" rtsExt:name="dataport.data_type"/>
+        <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        <rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type"/>
+        <rtsExt:Properties rtsExt:value="flush" rtsExt:name="dataport.subscription_type"/>
+        <rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian"/>
+        <rtsExt:Properties rtsExt:value="" rtsExt:name="dataport.inport"/>
+        <rtsExt:Properties rtsExt:value="IOR:010000001a00000049444c3a4f70656e52544d2f496e506f72744364723a312e30000000010000000000000068000000010102000f0000003137322e33302e3133302e323530000050fd00000e000000fe4994ba5d000073b4000000000500000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100" rtsExt:name="dataport.corba_cdr.inport_ior"/>
+        <rtsExt:Properties rtsExt:name="dataport.corba_cdr.inport_ref"/>
+    </rts:DataPortConnectors>
+    <rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:subscriptionType="new" rts:dataflowType="push" rts:interfaceType="corba_cdr" rts:dataType="IDL:RTC/TimedVelocity2D:1.0" rts:name="black_shipVelocity2D" rts:connectorId="604e862d-f8b6-4e2b-86f2-84cc830d7285">
+        <rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="object_tacking_concierge0.black_ship" rts:instanceName="object_tacking_concierge0" rts:componentId="RTC:Kazuma_Fujimoto:Category:object_tacking_concierge:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:sourceDataPort>
+        <rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Concierge_Type3_verOLD0.Velocity2D" rts:instanceName="Concierge_Type3_verOLD0" rts:componentId="RTC:Kazuma Fujimoto:Category:Concierge_Type3_verOLD:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/Concierge_Type3_verOLD0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:targetDataPort>
+        <rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type"/>
+        <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        <rtsExt:Properties rtsExt:value="new" rtsExt:name="dataport.subscription_type"/>
+        <rtsExt:Properties rtsExt:value="IDL:RTC/TimedVelocity2D:1.0" rtsExt:name="dataport.data_type"/>
+        <rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian"/>
+        <rtsExt:Properties rtsExt:value="IOR:010000001a00000049444c3a4f70656e52544d2f496e506f72744364723a312e30000000010000000000000064000000010102000e0000003137322e33302e3132392e33380021c30e000000fe4c94ba5d00000eec000000000600000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100" rtsExt:name="dataport.corba_cdr.inport_ior"/>
+        <rtsExt:Properties rtsExt:name="dataport.corba_cdr.inport_ref"/>
+    </rts:DataPortConnectors>
+    <rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:subscriptionType="new" rts:dataflowType="push" rts:interfaceType="corba_cdr" rts:dataType="IDL:RTC/RangeData:1.0" rts:name="RangeDataRangeData" rts:connectorId="66850e8f-310a-436c-aadd-e2b663f08ebc">
+        <rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="URG0.RangeData" rts:instanceName="URG0" rts:componentId="RTC:VenderName:Category:URG:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/URG0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:sourceDataPort>
+        <rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="object_tacking_concierge0.RangeData" rts:instanceName="object_tacking_concierge0" rts:componentId="RTC:Kazuma_Fujimoto:Category:object_tacking_concierge:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:targetDataPort>
+        <rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type"/>
+        <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        <rtsExt:Properties rtsExt:value="new" rtsExt:name="dataport.subscription_type"/>
+        <rtsExt:Properties rtsExt:value="IDL:RTC/RangeData:1.0" rtsExt:name="dataport.data_type"/>
+        <rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian"/>
+        <rtsExt:Properties rtsExt:value="IOR:010000001a00000049444c3a4f70656e52544d2f496e506f72744364723a312e30000000010000000000000064000000010102000e0000003137322e33302e3132392e3338001ec30e000000fe4c94ba5d00000d24000000000900000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100" rtsExt:name="dataport.corba_cdr.inport_ior"/>
+        <rtsExt:Properties rtsExt:name="dataport.corba_cdr.inport_ref"/>
+    </rts:DataPortConnectors>
+    <rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:subscriptionType="new" rts:dataflowType="push" rts:interfaceType="corba_cdr" rts:dataType="IDL:RTC/TimedString:1.0" rts:name="user_infouser_info" rts:connectorId="574daa4d-3a36-4104-b2b0-82ce2a661edc">
+        <rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Kinect0.user_info" rts:instanceName="Kinect0" rts:componentId="RTC:Kazuma Fujimoto:Category:Kinect:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/Kinect0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:sourceDataPort>
+        <rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="object_tacking_concierge0.user_info" rts:instanceName="object_tacking_concierge0" rts:componentId="RTC:Kazuma_Fujimoto:Category:object_tacking_concierge:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:targetDataPort>
+        <rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type"/>
+        <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        <rtsExt:Properties rtsExt:value="new" rtsExt:name="dataport.subscription_type"/>
+        <rtsExt:Properties rtsExt:value="IDL:RTC/TimedString:1.0" rtsExt:name="dataport.data_type"/>
+        <rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian"/>
+        <rtsExt:Properties rtsExt:value="IOR:010000001a00000049444c3a4f70656e52544d2f496e506f72744364723a312e30000000010000000000000064000000010102000e0000003137322e33302e3132392e3338001ec30e000000fe4c94ba5d00000d24000000000b00000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100" rtsExt:name="dataport.corba_cdr.inport_ior"/>
+        <rtsExt:Properties rtsExt:name="dataport.corba_cdr.inport_ref"/>
+    </rts:DataPortConnectors>
+    <rts:DataPortConnectors xsi:type="rtsExt:dataport_connector_ext" rts:subscriptionType="new" rts:dataflowType="push" rts:interfaceType="corba_cdr" rts:dataType="IDL:RTC/TimedPose2D:1.0" rts:name="RobotPose2DRobotPose2D" rts:connectorId="3e4a473a-e69c-4e8d-b847-71d0a48e4b45">
+        <rts:sourceDataPort xsi:type="rtsExt:target_port_ext" rts:portName="Concierge_Type3_verOLD0.RobotPose2D" rts:instanceName="Concierge_Type3_verOLD0" rts:componentId="RTC:Kazuma Fujimoto:Category:Concierge_Type3_verOLD:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/Concierge_Type3_verOLD0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:sourceDataPort>
+        <rts:targetDataPort xsi:type="rtsExt:target_port_ext" rts:portName="object_tacking_concierge0.RobotPose2D" rts:instanceName="object_tacking_concierge0" rts:componentId="RTC:Kazuma_Fujimoto:Category:object_tacking_concierge:1.0.0">
+            <rtsExt:Properties rtsExt:value="172.30.129.38/ROBOlab-PC.host_cxt/object_tacking_concierge0.rtc" rtsExt:name="COMPONENT_PATH_ID"/>
+        </rts:targetDataPort>
+        <rtsExt:Properties rtsExt:value="push" rtsExt:name="dataport.dataflow_type"/>
+        <rtsExt:Properties rtsExt:value="corba_cdr" rtsExt:name="dataport.interface_type"/>
+        <rtsExt:Properties rtsExt:value="new" rtsExt:name="dataport.subscription_type"/>
+        <rtsExt:Properties rtsExt:value="IDL:RTC/TimedPose2D:1.0" rtsExt:name="dataport.data_type"/>
+        <rtsExt:Properties rtsExt:value="little,big" rtsExt:name="dataport.serializer.cdr.endian"/>
+        <rtsExt:Properties rtsExt:value="IOR:010000001a00000049444c3a4f70656e52544d2f496e506f72744364723a312e30000000010000000000000064000000010102000e0000003137322e33302e3132392e3338001ec30e000000fe4c94ba5d00000d24000000000a00000200000000000000080000000100000000545441010000001c00000001000000010001000100000001000105090101000100000009010100" rtsExt:name="dataport.corba_cdr.inport_ior"/>
+        <rtsExt:Properties rtsExt:name="dataport.corba_cdr.inport_ref"/>
+    </rts:DataPortConnectors>
+    <rtsExt:Properties rtsExt:value="{ }" rtsExt:name="rtse.ecconn.bendpoints"/>
+    <rtsExt:Properties rtsExt:name="rtse.ecconn.show"/>
+    <rtsExt:Properties rtsExt:name="rtse.ectab.show"/>
+</rts:RtsProfile>
+
