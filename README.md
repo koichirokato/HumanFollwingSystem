@@ -15,8 +15,11 @@
 - TrajectoryPrediction RTC
   - 今回開発した追従対象者の軌跡を予測するRTC
 
-詳細なマニュアルは以下にあります．
-https://github.com/koichirokato/HumanFollwingSystem/blob/master/user_manual.md
+概要は以下にあります．  
+https://github.com/koichirokato/HumanFollwingSystem/blob/master/HumanFollowingSystemPPT.pptx  
+
+詳細なマニュアルは以下にあります．  
+https://github.com/koichirokato/HumanFollwingSystem/blob/master/user_manual.md  
 
 
 ****
