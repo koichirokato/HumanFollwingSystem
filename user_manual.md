@@ -207,7 +207,7 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 <div style="page-break-before:always"></div>
 
 # 3. 軌跡予測RTC(TrajectoryPrediction RTC)  
-本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[3]がSocial-LSTM[4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．図3-1と表3-1に外観と詳細を示す．今回は学習に用いたデータセットがETH Dataset[5]のため，ワールド座標系の人の座標をもとに予測をする．  
+本RTCは今回新規に開発したRTCである．東京女子大学の加藤研究室[3]がSocial-LSTM[4]を用いて予測器を構築した．機械学習した予測器で追従対象者の軌跡を予測して出力する．InportのHumanPointは人の座標を受け取るポートであり，object_tracking_conciergeから追従中の追従対象者の位置座標を受け取る．OutportのPredictionHumanPointは予測した人の座標を出力する．図3-1と表3-1に外観と詳細を示す．今回は学習に用いたデータセットがETH Dataset[5]のため，ワールド座標系の人の座標をもとに予測をする．    
 
 現在の仕様は.txtファイル経由でデータの受け取り，出力を行っている．まずRTCが人の位置座標を受け取り，`TrajectoryPrediction/data/test/crowds/input.txt`に人のデータを書き込む．そのファイルから最新の10フレーム分を用いて予測器にて予測を行い `TrajectoryPrediction/result/SOCIALLSTM/LSTM/test/crowds/file01.txt`に予測した10フレーム分のデータを出力する．    
 
@@ -310,7 +310,8 @@ PC①で動作させるRTCはC++で実装されているため，exeファイル
 <br>
 
  - PC②  
-TrajectoryPrediction RTCはPython言語で実装されているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．<br>  
+TrajectoryPrediction RTCはPython言語で実装されているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．また，起動時に図なんとかのようにGUIが立ち上がる．  
+<br>  
     `Python TrajectoryPrediction.py`  
 <br>
 
