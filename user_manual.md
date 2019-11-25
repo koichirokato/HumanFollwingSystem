@@ -310,7 +310,7 @@ PC①で動作させるRTCはC++で実装されているため，exeファイル
 <br>
 
  - PC②  
-TrajectoryPrediction RTCはPython言語で実装されているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．また，起動時に図なんとかのようにGUIが立ち上がる．  
+TrajectoryPrediction RTCはPython言語で実装されているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．また，起動時にGUIが立ち上がる．  
 <br>  
     `Python TrajectoryPrediction.py`  
 <br>
