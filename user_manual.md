@@ -1,5 +1,5 @@
 <h3>RTミドルウェアコンテスト</h3>
-<h1>「追従中の人の軌跡を予測するRTC」ユーザーマニュアル ver 1.0  </h1>
+<h1>「追従中の人の軌跡を予測するRTC」ユーザーマニュアル ver 2.0  </h1>
 
 芝浦工業大学 機械機能工学科 知能機械システム研究室 加藤 宏一朗 松日楽信人  
 東京女子大学 数理科学科 加藤研究室 赤羽根 里奈 加藤由花   
@@ -27,6 +27,7 @@
   - [4.6 システムの起動](#46-%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e8%b5%b7%e5%8b%95)
     - [4.7 追従の開始](#47-%e8%bf%bd%e5%be%93%e3%81%ae%e9%96%8b%e5%a7%8b)
 - [5. 参考文献](#5-%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae)
+- [6. 変更履歴](#6-%e5%a4%89%e6%9b%b4%e5%b1%a5%e6%ad%b4)
 
 
 <div style="page-break-before:always"></div>
@@ -279,14 +280,6 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 
 ## 4.3 RTCのダウンロード
 GithubからPC①にobject_tracking_concierge，PC②にTrajectoryPredictionをダウンロードする．  
-object_tracking_concierge RTCはC++言語で実装されているため，ビルドを行う必要がある．また，ログファイルをC++から書き込むため，図4-1のようにビルド先のobject_tracking_conciergeComp.exe等 と同ディレクトリに "log"フォルダを作る必要がある．  
-
-<div align="left">
-<img src="./Image_for_Manual/log.png" width="70%"> 
-</div>
-<div style="text-align: left;">
-図4-1 Logフォルダ
-</div>
 
 <div style="page-break-before:always"></div>
 
@@ -375,6 +368,12 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 Never Walk Alone: Modeling Social Behavior for Multi-target
 Tracking, Proc. IEEE International Conference on Computer
 Vision (ICCV 2009), pp. 261-268(2009).  
+
+# 6. 変更履歴  
+詳細はこちらになります．  
+https://github.com/koichirokato/HumanFollwingSystem/releases  
+2019/12/02 ソースコードのバイナリ化，それに伴いマニュアルを一部改訂しました．  
+
 
 ***
 連絡先：
