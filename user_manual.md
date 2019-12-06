@@ -365,7 +365,7 @@ Vision (ICCV 2009), pp. 261-268(2009).
 詳細はこちらになります．  
 https://github.com/koichirokato/HumanFollwingSystem/releases  
 2019/12/02 ソースコードのバイナリ化，それに伴いマニュアルを一部改訂しました．  
-
+2019/12/06 RTCの起動方法をrtshellで行う方法としました．それに伴いマニュアルを一部改訂しました．  
 
 ***
 連絡先：
