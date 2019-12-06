@@ -19,13 +19,11 @@
 - [4. 本システムの使用方法](#4-%e6%9c%ac%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e4%bd%bf%e7%94%a8%e6%96%b9%e6%b3%95)
   - [4.1 ハードウェアの準備](#41-%e3%83%8f%e3%83%bc%e3%83%89%e3%82%a6%e3%82%a7%e3%82%a2%e3%81%ae%e6%ba%96%e5%82%99)
   - [4.2 動作環境](#42-%e5%8b%95%e4%bd%9c%e7%92%b0%e5%a2%83)
-  - [4.3 RTCのダウンロード](#43-rtc%e3%81%ae%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89)
+  - [4.3 RTC,batファイルのダウンロード](#43-rtcbat%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%81%ae%e3%83%80%e3%82%a6%e3%83%b3%e3%83%ad%e3%83%bc%e3%83%89)
   - [4.4 システムの起動](#44-%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e8%b5%b7%e5%8b%95)
-  - [4.5 RTCの接続](#45-rtc%e3%81%ae%e6%8e%a5%e7%b6%9a)
-    - [4.5.1 PC間の接続](#451-pc%e9%96%93%e3%81%ae%e6%8e%a5%e7%b6%9a)
-    - [4.5.2 各RTCの接続](#452-%e5%90%84rtc%e3%81%ae%e6%8e%a5%e7%b6%9a)
-  - [4.6 システムの起動](#46-%e3%82%b7%e3%82%b9%e3%83%86%e3%83%a0%e3%81%ae%e8%b5%b7%e5%8b%95)
-    - [4.7 追従の開始](#47-%e8%bf%bd%e5%be%93%e3%81%ae%e9%96%8b%e5%a7%8b)
+    - [4.4.1 準備](#441-%e6%ba%96%e5%82%99)
+    - [4.4.2 コンポーネントの起動](#442-%e3%82%b3%e3%83%b3%e3%83%9d%e3%83%bc%e3%83%8d%e3%83%b3%e3%83%88%e3%81%ae%e8%b5%b7%e5%8b%95)
+    - [4.5 追従の開始](#45-%e8%bf%bd%e5%be%93%e3%81%ae%e9%96%8b%e5%a7%8b)
 - [5. 参考文献](#5-%e5%8f%82%e8%80%83%e6%96%87%e7%8c%ae)
 - [6. 変更履歴](#6-%e5%a4%89%e6%9b%b4%e5%b1%a5%e6%ad%b4)
 
@@ -278,17 +276,30 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 - pytorch 1.3.0+cpu  
 
 
-## 4.3 RTCのダウンロード
-GithubからPC①にobject_tracking_concierge，PC②にTrajectoryPredictionをダウンロードする．  
+## 4.3 RTC,batファイルのダウンロード
+GithubのworkspaceからPC①に01_MAINPCの中身，PC②に02_SUBPCの中身をダウンロードする．  
+
+https://github.com/koichirokato/HumanFollwingSystem/tree/master/workspace
 
 <div style="page-break-before:always"></div>
 
 ## 4.4 システムの起動
+### 4.4.1 準備  
 - PC①，PC②共通  
-Start Naming Service とeclipseを起動する．ワークスペースの選択ではRTCのフォルダがあるワークスペースを選択する．また，2台のPCが同ネットワークに接続されている必要がある．  
+2台のPCを同じネットワークに接続する．
+
 <br>
 
  - PC①  
+コマンドプロンプトを開き `ipconfig` コマンドでipアドレスを確認する．  
+次に， `hostname.exe` コマンドでPC名を確認する．  
+
+ - PC②  
+PC①のipアドレスとPC名を `Config.ini` ファイルに入力する．  
+
+### 4.4.2 コンポーネントの起動  
+
+ - PC①
 PC①にURG，Xtion，移動台車を接続する．  
 PC①で動作させるRTCはC++で実装されているため，exeファイルから起動させる．  
 
@@ -302,45 +313,26 @@ PC①で動作させるRTCはC++で実装されているため，exeファイル
 |  object_tracking_concierge  | object_tracking_conciergeComp.exe |
 <br>
 
- - PC②  
-TrajectoryPrediction RTCはPython言語で実装されているため，コマンドプロンプトからPythonファイルのあるディレクトリに移動して以下のように実行するか，図4-1のようにファイルを選択して実行する．また，起動時にGUIが立ち上がる．  
-<br>  
-    `Python TrajectoryPrediction.py`  
+起動後，`MAIN.bat` を実行させることでrtm-namingが立ち上がり，さらにコンポーネントのポートが繋がる．
+
+ - PC②
+`SUB.bat` を実行する．それによってRTCの実行，ポートの接続，アクティブ化まで完了する．
+
 <br>
 
-<div align="left">
-<img src="./Image_for_Manual/TrajectoryPrediction_py.png" width="60%"> 
-</div>
-
-<div style="text-align: left;">
-図4-2 TrajectoryPrediction.py
-</div>
-<br>
-
-
-## 4.5 RTCの接続
-### 4.5.1 PC間の接続
-PC①またはPC②のEclipseでネームサーバーの追加からもう一方のPCのIPアドレスを入力して接続する．
-
-### 4.5.2 各RTCの接続
-4.5.1でネームサーバーを追加したPCで，4.4で起動したRTCをSystem Diagram上にドラッグ&ドロップし，各RTCのポートを図2-1のように接続する．  
-
-
-## 4.6 システムの起動  
-各コンポーネントをアクティベートする．PC①上でPrime Sense USer Tracker ViewerとURG_Dataのウィンドウが起動するのでの表示を図4-1のように表示させる．URG_Dataのウィンドウはobject_tracking_concierge RTC内でウィンドウプロシージャを使用して表示させているのでこのウィンドウが前面にない場合，動作しない．  
+### 4.5 追従の開始
+アクティベート後，PC①上でPrime Sense USer Tracker ViewerとURG_Dataのウィンドウが起動するので図4-1のようにウィンドウを配置する．URG_Dataのウィンドウはobject_tracking_concierge RTC内でウィンドウプロシージャを使用して表示させているのでこのウィンドウが前面にない場合，動作しない．  
 
 <div align="left">
 <img src="./Image_for_Manual/display_kinect_and_urg.png" width="100%"> 
 </div>
 
 <div style="text-align: left;">
-図4-3 表示画面
+図4-1 表示画面
 </div>
 <br>
 
 <div style="page-break-before:always"></div>
-
-### 4.7 追従の開始
 右手より右ひじが上かつ，右ひじより右肩が上のポーズ(図4-2)を認識したタイミングで追従を開始する．追従を終わらせたい場合は再度右手を上げる．今回開発した TrajectoryPrediction RTCは曲がり角，障害物の回避後などで人を見失った場合(Xtion，URGからの人の座標が更新されなくなった場合)に動作する． 
 
 <div align="left">
@@ -348,7 +340,7 @@ PC①またはPC②のEclipseでネームサーバーの追加からもう一方
 </div>
 
 <div style="text-align: left;">
-図4-4 追従開始/終了のポーズ
+図4-2 追従開始/終了のポーズ
 </div>
 <br> 
 
