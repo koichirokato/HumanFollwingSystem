@@ -226,12 +226,12 @@ DepthセンサはASUS社の Xtion Pro LIVEⓇ[2]を用いた．OpenNIを用い�
 |In/Out| Port名 | データ型 | 機能 | データの例 |
 |:---: |:---: |:---:    |:---:|  :---:|
 |In    |HumanPoint|TimedDoubleSeq|人の座標を受け取る|HumanPoint.data.[0] = 人のx座標  HumanPoint.data.[1] = 人のy座標|
-|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[2n-1] = 人のx座標 <br> PredictionHumanPoint.data.[2n] = 人のy座標 <br> (1≦n≦5)|  
+|Out    |PredictionHumanPoint|TimedDoubleSeq|予測した人の座標を出力する|PredictionHumanPoint.data.[2n-1] = 人のx座標 <br> PredictionHumanPoint.data.[2n] = 人のy座標 <br> (1≦n≦10)|  
 
 <div style="page-break-before:always"></div>
 
 ## 3.2 予測結果  
-今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は5フレーム分を受け取り，その座標をロボットに追従させる．安全面を考慮して，予測結果が人を見失った座標から大きく離れていた場合はその予測を適応しない．  
+今回の予測器を用いて簡単な実験を行ったところ以下のようになった．10フレーム分の人の座標データからその先10フレーム分を予測する．実際に予測をロボットに適応する際は10フレーム分を受け取り，その座標をロボットに追従させる．安全面を考慮して，予測結果が人を見失った座標から大きく離れていた場合はその予測を適応しない．  
 イメージは図3-2のようになっている．この処理が1~10フレームの人の座標を更新しながら繰り返されている．また，実験結果は図3-3のようになった．青色のプロットが人の軌跡でオレンジの点が予測された点である．これは11フレーム目のみの値である．  
 
 <div align="left">
@@ -295,7 +295,12 @@ https://github.com/koichirokato/HumanFollwingSystem/tree/master/workspace
 次に， `hostname.exe` コマンドでPC名を確認する．  
 
  - PC②  
-PC①のipアドレスとPC名を `Config.ini` ファイルに入力する．  
+PC①のipアドレスとPC名を以下のように `Config.ini` ファイルに入力する．
+
+```
+MAINIP=PC①のipアドレス  
+MAINNAME=PC①のPC名  
+```
 
 ### 4.4.2 コンポーネントの起動  
 

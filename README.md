@@ -1,4 +1,4 @@
-<h1>HumanFollwingSystem</h1> 
+<h1>HumanFollwingSystem</h1>
 
 <h2>「追従中の人の軌跡を予測するRTC」</h2>
   
