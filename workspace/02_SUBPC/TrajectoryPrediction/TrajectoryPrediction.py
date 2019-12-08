@@ -17,8 +17,11 @@ import shutil
 import os
 from numpy import float32
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 import tkinter as tk
+import datetime
+import csv
 
 from matplotlib.backends.backend_tkagg import (
     FigureCanvasTkAgg, NavigationToolbar2Tk)
@@ -131,7 +134,8 @@ class TrajectoryPrediction(OpenRTM_aist.DataFlowComponentBase):
 		for i in range(11):
 			self.dummy = str(i+11) + " " + str(1) + " ? ? "
 			self.dummylist.append(self.dummy)
-		
+		# print(self.dummylist)
+
 		return RTC.RTC_OK
 	
 	###
@@ -221,12 +225,6 @@ class TrajectoryPrediction(OpenRTM_aist.DataFlowComponentBase):
 		dataBuffer = []
 		os.chmod(src, 0o666)
 		
-		# print(os.access(".\data\test\crowds\input01.txt",os.R_OK))
-		# print(os.access(src,os.W_OK))
-		# print(os.access(src,os.X_OK))
-		# global i
-		# i += 0.01
-		# print("i = " + str(i))
 		# 人の座標を10フレームごとinputファイルに書きこむ
 		if self._HumanPointIn.isNew():
 			if (self.fflag == 1) and (self.cnt == 0):
@@ -253,8 +251,6 @@ class TrajectoryPrediction(OpenRTM_aist.DataFlowComponentBase):
 					
 					with open(src, mode='w') as f:
 						f.write('\n'.join(self.HumanPointList))
-						# for ele in self.HumanPointList:
-						# 	f.write(ele + '\n')
 
 					self.HumanPointList = []
 					shutil.copyfile(src,copy)
@@ -268,7 +264,7 @@ class TrajectoryPrediction(OpenRTM_aist.DataFlowComponentBase):
 					result_plot = result
 					
 					# numpy.float⇒float
-					for i in range(5):
+					for i in range(10):
 						HumanPredictionPoint_x = float(result[i,0,0])
 						HumanPredictionPoint_y = float(result[i,0,1])
 						dataBuffer.append(HumanPredictionPoint_x)
@@ -369,6 +365,10 @@ def MyModuleInit(manager):
     comp = manager.createComponent("TrajectoryPrediction")
 
 def main():
+	# make log file(csv)
+	now = datetime.datetime.now()
+	logfile = './log_csv/log_' + now.strftime('%Y%m%d_%H%M%S') + '.csv'
+	open(logfile, mode='w')
 	mgr = OpenRTM_aist.Manager.init(sys.argv)
 	mgr.setModuleInitProc(MyModuleInit)
 	mgr.activateManager()
@@ -379,10 +379,13 @@ def main():
 		root.destroy()  # this is necessary on Windows to prevent
 						# Fatal Python Error: PyEval_RestoreThread: NULL tstate
 	
+	# plot Humanpoint and PredictionHumanPoint using Tk
 	def plot():
+		sns.set()
 		global humanpoint_x, humanpoint_y, result_plot
-		prediction_humanpoint_x, prediction_humanpoint_y = [], []
-		
+		prediction_humanpoint_x, prediction_humanpoint_y, logtmp = [], [], []
+		tmp = ''
+			
 		global plot_flag
 		if plot_flag == 1:
 			print("plot prediction")
@@ -391,10 +394,23 @@ def main():
 				prediction_humanpoint_y.append(float(result_plot[i,0,1]))
 		
 			plt.scatter(prediction_humanpoint_x, prediction_humanpoint_y, c='red')
-		plot_flag = 0
+
+			# log
+			with open(logfile, mode='a') as f:
+				writer = csv.writer(f, lineterminator='\n')
+				for i in range(10):
+					tmp = ''
+					tmp = str(prediction_humanpoint_x[i])
+					logtmp.append(tmp)
+					tmp = str(prediction_humanpoint_y[i])
+					logtmp.append(tmp)
+					writer.writerow(logtmp)
+					
+			plot_flag = 0
 
 		plt.scatter(humanpoint_x, humanpoint_y, c='blue')
 
+		# draw => root.after
 		canvas.draw()
 		root.after(100,plot)
 
@@ -406,18 +422,19 @@ def main():
 	# FuncAnimationより前に呼ぶ必要がある
 	canvas = FigureCanvasTkAgg(fig, master=root)  # A tk.DrawingArea.
 	ax.set_xlim((-10, 10))
-	ax.set_ylim((0, 10))
+	ax.set_ylim((-10, 10))
 
 	toolbar = NavigationToolbar2Tk(canvas, root)
 	canvas.get_tk_widget().pack()
 
 	button = tk.Button(master=root, text="Quit", command=_quit)
 	
+	# plot loop
 	root.after(100, plot)
 	button.pack()
-	print("main")
+	
 	root.mainloop()
-	print("after main")
+	
 
 if __name__ == "__main__":
 	main()
