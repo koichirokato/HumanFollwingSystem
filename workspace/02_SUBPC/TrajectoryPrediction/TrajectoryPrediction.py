@@ -400,6 +400,7 @@ def main():
 				writer = csv.writer(f, lineterminator='\n')
 				for i in range(10):
 					tmp = ''
+					logtmp = []
 					tmp = str(prediction_humanpoint_x[i])
 					logtmp.append(tmp)
 					tmp = str(prediction_humanpoint_y[i])
